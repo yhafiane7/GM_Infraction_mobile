@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/Agent.dart';
-import 'package:GM_INFRACTION/Categorie.dart';
-import 'package:GM_INFRACTION/Commune.dart';
-import 'package:GM_INFRACTION/Decision.dart';
-import 'package:GM_INFRACTION/Infraction.dart';
-import 'package:GM_INFRACTION/Violant.dart';
+import 'package:GM_INFRACTION/agent.dart';
+import 'package:GM_INFRACTION/categorie.dart';
+import 'package:GM_INFRACTION/commune.dart';
+import 'package:GM_INFRACTION/decision.dart';
+import 'package:GM_INFRACTION/infraction.dart';
+import 'package:GM_INFRACTION/violant.dart';
 import 'package:GM_INFRACTION/models/categorie_model.dart';
 import 'package:GM_INFRACTION/models/commune_model.dart';
 import 'package:GM_INFRACTION/models/decision_model.dart';
