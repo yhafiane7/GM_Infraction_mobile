@@ -24,8 +24,8 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Run tests
-        run: flutter test --reporter=expanded
+      - name: Run tests with coverage
+        run: flutter test --coverage --reporter=expanded
 
       - name: Analyze code
         run: flutter analyze --no-fatal-infos
@@ -37,13 +37,16 @@ jobs:
         run: flutter build apk --debug
 
       - name: Upload Debug APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-debug-apk
           path: build/app/outputs/flutter-apk/app-debug.apk
           retention-days: 7
+
       - name: Upload coverage reports to Codecov
+        if: success()
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: yhafiane7/GM_Infraction_mobile
+          fail_ci_if_error: false

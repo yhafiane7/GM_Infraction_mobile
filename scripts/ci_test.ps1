@@ -6,8 +6,8 @@ Write-Host "🚀 Running Development CI Tests Locally..." -ForegroundColor Green
 Write-Host "📦 Getting dependencies..." -ForegroundColor Yellow
 flutter pub get
 
-Write-Host "🧪 Running tests..." -ForegroundColor Yellow
-flutter test --reporter=expanded
+Write-Host "🧪 Running tests with coverage..." -ForegroundColor Yellow
+flutter test --coverage --reporter=expanded
 
 Write-Host "🔍 Analyzing code..." -ForegroundColor Yellow
 flutter analyze --no-fatal-infos

@@ -76,11 +76,26 @@ To run the same checks locally as the CI pipeline:
 
 # Or run individual commands:
 flutter pub get
-flutter test --reporter=expanded
+flutter test --coverage --reporter=expanded
 flutter analyze --no-fatal-infos
 dart format --output=none --set-exit-if-changed .
 flutter build apk --debug
 ```
+
+### Code Coverage
+
+The CI pipeline generates test coverage reports. To view coverage locally:
+
+```bash
+# Generate coverage report
+flutter test --coverage
+
+# View coverage (requires lcov)
+genhtml coverage/lcov.info -o coverage/html
+open coverage/html/index.html
+```
+
+**Note**: Codecov integration is optional. If you want to upload coverage reports to Codecov, add a `CODECOV_TOKEN` secret to your GitHub repository settings.
 
 ## Setup & Run
 
