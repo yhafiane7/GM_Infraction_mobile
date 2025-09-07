@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Infraction {
   final int? id;
   final String nom;

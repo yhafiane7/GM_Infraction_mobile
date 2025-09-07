@@ -4,7 +4,6 @@ import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:GM_INFRACTION/services/api_client.dart';
 import 'package:GM_INFRACTION/models/agent_model.dart';
-import '../test_helpers/test_data_generator.dart';
 import '../test_helpers/mock_responses.dart';
 
 // Generate mocks for http.Client

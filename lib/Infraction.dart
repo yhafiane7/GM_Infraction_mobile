@@ -542,7 +542,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         fillColor: Colors.blue[50],
                         labelText: 'Commune',
                       ),
-                      value: commune_id != null
+                      value: commune_id != 0
                           ? widget.Communes.firstWhereOrNull(
                               (commune) => commune.id == commune_id)
                           : null,
@@ -577,7 +577,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         filled: true,
                         fillColor: Colors.blue[50],
                       ),
-                      value: violant_id != null
+                      value: violant_id != 0
                           ? widget.Violants.firstWhereOrNull(
                               (violant) => violant.id == violant_id)
                           : null,
@@ -613,7 +613,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         filled: true,
                         fillColor: Colors.blue[50],
                       ),
-                      value: agent_id != null
+                      value: agent_id != 0
                           ? widget.Agents.firstWhereOrNull(
                               (agent) => agent.id == agent_id)
                           : null,
@@ -648,7 +648,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         fillColor: Colors.blue[50],
                         labelText: 'Categorie',
                       ),
-                      value: categorie_id != null
+                      value: categorie_id != 0
                           ? widget.Categories.firstWhereOrNull(
                               (categorie) => categorie.id == categorie_id)
                           : null,

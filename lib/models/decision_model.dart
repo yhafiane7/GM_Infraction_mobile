@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Decision {
   final int? id;
   final String date;

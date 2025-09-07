@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Commune {
   final int? id;
   final String pachalikcircon;

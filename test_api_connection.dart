@@ -1,8 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:developer' as developer;
 
 void main() async {
-  print('Testing API connection...');
+  developer.log('Testing API connection...');
 
   try {
     final response = await http.get(
@@ -10,15 +11,15 @@ void main() async {
       headers: {'Content-Type': 'application/json'},
     );
 
-    print('Status Code: ${response.statusCode}');
-    print('Response Body: ${response.body.substring(0, 200)}...');
+    developer.log('Status Code: ${response.statusCode}');
+    developer.log('Response Body: ${response.body.substring(0, 200)}...');
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      print('Number of agents: ${data.length}');
-      print('First agent: ${data[0]}');
+      developer.log('Number of agents: ${data.length}');
+      developer.log('First agent: ${data[0]}');
     }
   } catch (e) {
-    print('Error: $e');
+    developer.log('Error: $e');
   }
 }
