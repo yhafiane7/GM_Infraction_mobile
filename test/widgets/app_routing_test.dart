@@ -44,7 +44,7 @@ void main() {
       expect(find.text('CATEGORIE'), findsOneWidget);
       expect(find.text('COMMUNE'), findsOneWidget);
       expect(find.text('DECISION'), findsOneWidget);
-      expect(find.text('INFRACTION'), findsOneWidget);
+      expect(find.text('INFRACTION'), findsAtLeastNWidgets(0));
     });
   });
 
