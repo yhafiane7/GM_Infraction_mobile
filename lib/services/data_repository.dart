@@ -13,7 +13,8 @@ class DataRepository {
   }
 
   static Future<Agent> getAgent(int index) async {
-    return await ApiClient.getData<Agent>(index, (json) => Agent.fromJson(json));
+    return await ApiClient.getData<Agent>(
+        index, (json) => Agent.fromJson(json));
   }
 
   static Future<String> createAgent(Agent agent) async {
@@ -34,7 +35,8 @@ class DataRepository {
   }
 
   static Future<Commune> getCommune(int index) async {
-    return await ApiClient.getData<Commune>(index, (json) => Commune.fromJson(json));
+    return await ApiClient.getData<Commune>(
+        index, (json) => Commune.fromJson(json));
   }
 
   static Future<String> createCommune(Commune commune) async {
@@ -51,11 +53,13 @@ class DataRepository {
 
   //------------------------------------Categorie Operations-------------------------------------------------------//
   static Future<List<Categorie>> fetchCategories() async {
-    return await ApiClient.fetchData<Categorie>((json) => Categorie.fromJson(json));
+    return await ApiClient.fetchData<Categorie>(
+        (json) => Categorie.fromJson(json));
   }
 
   static Future<Categorie> getCategorie(int index) async {
-    return await ApiClient.getData<Categorie>(index, (json) => Categorie.fromJson(json));
+    return await ApiClient.getData<Categorie>(
+        index, (json) => Categorie.fromJson(json));
   }
 
   static Future<String> createCategorie(Categorie categorie) async {
@@ -72,22 +76,26 @@ class DataRepository {
 
   //------------------------------------Infraction Operations-------------------------------------------------------//
   static Future<List<Infraction>> fetchInfractions() async {
-    return await ApiClient.fetchData<Infraction>((json) => Infraction.fromJson(json));
+    return await ApiClient.fetchData<Infraction>(
+        (json) => Infraction.fromJson(json));
   }
 
   static Future<Infraction> getInfraction(int index) async {
-    return await ApiClient.getData<Infraction>(index, (json) => Infraction.fromJson(json));
+    return await ApiClient.getData<Infraction>(
+        index, (json) => Infraction.fromJson(json));
   }
 
   static Future<String> createInfraction(Infraction infraction) async {
     return await ApiClient.postData<Infraction>(infraction);
   }
 
-  static Future<String> updateInfraction(int index, Infraction infraction) async {
+  static Future<String> updateInfraction(
+      int index, Infraction infraction) async {
     return await ApiClient.updateData<Infraction>(index, infraction);
   }
 
-  static Future<String> deleteInfraction(int index, Infraction infraction) async {
+  static Future<String> deleteInfraction(
+      int index, Infraction infraction) async {
     return await ApiClient.deleteData<Infraction>(index, infraction);
   }
 
@@ -97,7 +105,8 @@ class DataRepository {
   }
 
   static Future<Violant> getViolant(int index) async {
-    return await ApiClient.getData<Violant>(index, (json) => Violant.fromJson(json));
+    return await ApiClient.getData<Violant>(
+        index, (json) => Violant.fromJson(json));
   }
 
   static Future<String> createViolant(Violant violant) async {
@@ -114,11 +123,13 @@ class DataRepository {
 
   //------------------------------------Decision Operations-------------------------------------------------------//
   static Future<List<Decision>> fetchDecisions() async {
-    return await ApiClient.fetchData<Decision>((json) => Decision.fromJson(json));
+    return await ApiClient.fetchData<Decision>(
+        (json) => Decision.fromJson(json));
   }
 
   static Future<Decision> getDecision(int index) async {
-    return await ApiClient.getData<Decision>(index, (json) => Decision.fromJson(json));
+    return await ApiClient.getData<Decision>(
+        index, (json) => Decision.fromJson(json));
   }
 
   static Future<String> createDecision(Decision decision) async {
