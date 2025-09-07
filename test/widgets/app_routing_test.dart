@@ -44,8 +44,7 @@ void main() {
       expect(find.text('CATEGORIE'), findsOneWidget);
       expect(find.text('COMMUNE'), findsOneWidget);
       expect(find.text('DECISION'), findsOneWidget);
-      // INFRACTION might not be visible due to filtering
-      expect(find.text('INFRACTION'), findsAtLeastNWidgets(0));
+      expect(find.text('INFRACTION'), findsOneWidget);
     });
   });
 
