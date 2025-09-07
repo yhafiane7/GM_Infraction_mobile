@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:GM_INFRACTION/Decision.dart';
-import 'package:GM_INFRACTION/Home.dart';
+import 'package:GM_INFRACTION/decision.dart';
+import 'package:GM_INFRACTION/home.dart';
 import 'package:GM_INFRACTION/models/agent_model.dart';
 import 'package:GM_INFRACTION/models/categorie_model.dart';
 import 'package:GM_INFRACTION/models/commune_model.dart';
@@ -9,11 +9,11 @@ import 'package:GM_INFRACTION/models/violant_model.dart';
 import 'package:GM_INFRACTION/page_base.dart';
 import 'package:GM_INFRACTION/services/ui_service.dart';
 
-import 'Agent.dart';
-import 'Categorie.dart';
-import 'Commune.dart';
-import 'Infraction.dart';
-import 'Violant.dart';
+import 'agent.dart';
+import 'categorie.dart';
+import 'commune.dart';
+import 'infraction.dart';
+import 'violant.dart';
 
 class AppRouting {
   static Map<String, Widget Function(BuildContext)> main(BuildContext context) {

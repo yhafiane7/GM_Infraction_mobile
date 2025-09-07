@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:GM_INFRACTION/main.dart';
-import 'package:GM_INFRACTION/Home.dart';
 
 void main() {
   group('Main App Widget Tests', () {
