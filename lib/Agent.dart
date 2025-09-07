@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gmsoft_pkg/config/global_params.dart';
-import 'package:gmsoft_pkg/item_card_widget.dart';
-import 'package:GM_INFRACTION/services/service_base.dart';
 import 'package:GM_INFRACTION/models/agent_model.dart';
-import 'services/service_widget.dart';
+import 'services/ui_service.dart';
+import 'services/data_repository.dart';
 
 class AgentList extends StatefulWidget {
   static String Route = "/agent";
@@ -16,49 +14,48 @@ class AgentList extends StatefulWidget {
 class _AgentListState extends State<AgentList> {
   @override
   Widget build(BuildContext context) {
-    final List<Agent> agents;
     return SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: DataTable(
-      columns: <DataColumn>[
-        DataColumn(label: Expanded(child: Text('ID'))),
-        const DataColumn(label: Expanded(child: Text('Nom'))),
-        const DataColumn(label: Expanded(child: Text('Prénom'))),
-        const DataColumn(label: Expanded(child: Text('CIN'))),
-        const DataColumn(label: Expanded(child: Text('N.Téle'))),
-        DataColumn(
-            label: Container(
-          width: 0,
-          padding: EdgeInsets.zero,
-          margin: EdgeInsets.zero,
-        )),
-      ],
-      rows: widget.Agents.asMap().entries.map((entry) {
-        final index = entry.key + 1;
-        final agent = entry.value;
-        final rowColor = index.isEven ? Colors.grey[300] : Colors.white;
-        return DataRow(
-            color: MaterialStateColor.resolveWith((states) => rowColor!),
-            cells: [
-              DataCell(Text(index.toString())),
-              DataCell(Text(agent.nom)),
-              DataCell(Text(agent.prenom)),
-              DataCell(Text(agent.cin)),
-              DataCell(Text(agent.tel)),
-              DataCell(
-                  Visibility(visible: false, child: Text(agent.id.toString()))),
-            ],
-            onLongPress: () => {showData(agent.id!, context)});
-      }).toList(),
+          columns: <DataColumn>[
+            DataColumn(label: Expanded(child: Text('ID'))),
+            const DataColumn(label: Expanded(child: Text('Nom'))),
+            const DataColumn(label: Expanded(child: Text('Prénom'))),
+            const DataColumn(label: Expanded(child: Text('CIN'))),
+            const DataColumn(label: Expanded(child: Text('N.Téle'))),
+            DataColumn(
+                label: Container(
+              width: 0,
+              padding: EdgeInsets.zero,
+              margin: EdgeInsets.zero,
+            )),
+          ],
+          rows: widget.Agents.asMap().entries.map((entry) {
+            final index = entry.key + 1;
+            final agent = entry.value;
+            final rowColor = index.isEven ? Colors.grey[300] : Colors.white;
+            return DataRow(
+                color: MaterialStateColor.resolveWith((states) => rowColor!),
+                cells: [
+                  DataCell(Text(index.toString())),
+                  DataCell(Text(agent.nom)),
+                  DataCell(Text(agent.prenom)),
+                  DataCell(Text(agent.cin)),
+                  DataCell(Text(agent.tel)),
+                  DataCell(Visibility(
+                      visible: false, child: Text(agent.id.toString()))),
+                ],
+                onLongPress: () => {showData(agent.id!, context)});
+          }).toList(),
         ),
-        ),
+      ),
     );
   }
 
   performAgentUpdate(int index, Agent agent) async {
-    String result = await ServiceBase.update(index, agent);
+    String result = await UiService.performAgentUpdate(index, agent);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,
@@ -67,14 +64,19 @@ class _AgentListState extends State<AgentList> {
   }
 
   _performAgentDelete(int index, Agent agent) async {
-    String result = await ServiceBase.delete(index, agent);
+    String result = await UiService.performAgentDelete(index, agent);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
   }
 
   showData(int index, BuildContext context) async {
-    Agent agent = (await ServiceBase.getData<Agent>(
-        index, (jsonData) => Agent.fromJson(jsonData)));
-    if (!context.mounted || agent == null) {
-      return Error();
+    Agent agent = await DataRepository.getAgent(index);
+    if (!context.mounted) {
+      return;
     }
     // here i m preparing attributes for the function in frontEnd file (it needs 3 lists
     List<String> fieldValuesIndicated = [
@@ -104,7 +106,7 @@ class _AgentListState extends State<AgentList> {
       Colors.blue
     ];
 
-    List<Widget> textFields = Design.buildTextFieldsEdit(
+    List<Widget> textFields = UiService.buildTextFieldsEdit(
         fieldValuesIndicated, fieldIcons, fieldColors, context);
     List<Widget> AllWidget = [
       ...textFields,
@@ -169,7 +171,7 @@ class _AgentListState extends State<AgentList> {
             icon: Icon(Icons.edit_outlined),
             label: Text('Modifier'),
             onPressed: () {
-              List<Object> result = Design.buildTextFieldsUpdate(
+              List<Object> result = UiService.buildTextFieldsUpdate(
                   fieldValues, fieldIcons, fieldColors, context);
               List<TextEditingController> controllers =
                   result[1] as List<TextEditingController>;
@@ -305,7 +307,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           width: screenSize.width * 0.9,
                           height: screenSize.height * 0.1,
                           child: TextFormField(
-                            decoration: Design.buildInputDecoration(
+                            decoration: UiService.buildInputDecoration(
                                 "Entrer Le Nom d'Agent",
                                 Icons.perm_contact_cal,
                                 Colors.blue),
@@ -324,7 +326,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: screenSize.width * 0.9,
                         height: screenSize.height * 0.1,
                         child: TextFormField(
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer le Prénom d'Agent",
                               Icons.perm_contact_cal_outlined,
                               Colors.blue),
@@ -342,13 +344,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: screenSize.width * 0.9,
                         height: screenSize.height * 0.1,
                         child: TextFormField(
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer le CIN d'Agent",
                               Icons.credit_card,
                               Colors.blue),
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
                               return "SVP entrer Le CIN";
+                            }
+                            if (value.length > 12) {
+                              return "Le CIN ne doit pas dépasser 12 caractères";
+                            }
+                            if (!RegExp(r'^[A-Z0-9]+$').hasMatch(value)) {
+                              return "Le CIN ne doit contenir que des lettres majuscules et des chiffres";
                             }
                             cin =
                                 value; // Assign the entered value to the specified field
@@ -361,13 +369,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         height: screenSize.height * 0.1,
                         child: TextFormField(
                           keyboardType: TextInputType.phone,
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer le N°Téle d'Agent",
                               Icons.phone,
                               Colors.blue),
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
                               return "SVP entrer Le N°Téle";
+                            }
+                            if (value.length != 10) {
+                              return "Le numéro doit contenir exactement 10 chiffres";
+                            }
+                            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                              return "Le numéro ne doit contenir que des chiffres";
                             }
                             tel =
                                 value; // Assign the entered value to the specified field
@@ -438,10 +452,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   _performAgentCreation(Agent agent) async {
-    String result = await ServiceBase.create(agent);
+    String result = await UiService.performAgentCreate(agent);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
     ));
   }
 }

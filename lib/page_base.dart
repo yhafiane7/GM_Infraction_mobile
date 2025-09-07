@@ -10,8 +10,7 @@ import 'package:GM_INFRACTION/models/commune_model.dart';
 import 'package:GM_INFRACTION/models/decision_model.dart';
 import 'package:GM_INFRACTION/models/infraction_model.dart';
 import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'package:GM_INFRACTION/services/service_base.dart';
-import 'package:http/http.dart' as http;
+import 'package:GM_INFRACTION/services/ui_service.dart';
 
 import 'models/agent_model.dart';
 
@@ -106,32 +105,20 @@ FutureBuilder<List<dynamic>> buildtheList(String title) {
 }
 
 Future<List<dynamic>> buildList(String title) async {
-  title=title.toLowerCase();
+  title = title.toLowerCase();
   switch (title) {
     case 'agent':
-      final List<Agent> agents = await ServiceBase.fetchData<Agent>(
-          http.Client(), title, (json) => Agent.fromJson(json));
-      return agents;
+      return await UiService.buildAgentList();
     case 'violant':
-      final List<Violant> violants = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Violant.fromJson(json));
-      return violants;
+      return await UiService.buildViolantList();
     case 'categorie':
-      final List<Categorie> categories = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Categorie.fromJson(json));
-      return categories;
+      return await UiService.buildCategorieList();
     case 'commune':
-      final List<Commune> communes = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Commune.fromJson(json));
-      return communes;
+      return await UiService.buildCommuneList();
     case 'decision':
-      final List<Decision> decisions = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Decision.fromJson(json));
-      return decisions;
+      return await UiService.buildDecisionList();
     case 'infraction':
-      final List<Infraction> infractions = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Infraction.fromJson(json));
-      return infractions;
+      return await UiService.buildInfractionList();
     default:
       throw Exception('Invalid TITLE : $title');
   }

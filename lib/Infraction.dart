@@ -6,9 +6,8 @@ import 'package:GM_INFRACTION/models/categorie_model.dart';
 import 'package:GM_INFRACTION/models/commune_model.dart';
 import 'package:GM_INFRACTION/models/infraction_model.dart';
 import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'services/service_base.dart';
-import 'services/service_widget.dart';
-import 'package:http/http.dart' as http;
+import 'services/ui_service.dart';
+import 'services/data_repository.dart';
 import 'package:collection/collection.dart';
 
 class InfractionList extends StatefulWidget {
@@ -77,7 +76,7 @@ class _InfractionListState extends State<InfractionList> {
   }
 
   performInfractionUpdate(int index, Infraction infraction) async {
-    String result = await ServiceBase.update(index, infraction);
+    String result = await UiService.performInfractionUpdate(index, infraction);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,
@@ -86,14 +85,19 @@ class _InfractionListState extends State<InfractionList> {
   }
 
   _performInfractionDelete(int index, Infraction infraction) async {
-    String result = await ServiceBase.delete(index, infraction);
+    String result = await UiService.performInfractionDelete(index, infraction);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
   }
 
   showData(int index, BuildContext context) async {
-    Infraction infraction = (await ServiceBase.getData<Infraction>(
-        index, (jsonData) => Infraction.fromJson(jsonData)));
-    if (!context.mounted || infraction == null) {
-      return Error();
+    Infraction infraction = await DataRepository.getInfraction(index);
+    if (!context.mounted) {
+      return;
     }
     // here i m preparing attributes for the function in frontEnd file (it needs 3 lists)
     //Indicated means that i am going to show in longpress of Datatable
@@ -163,8 +167,11 @@ class _InfractionListState extends State<InfractionList> {
     TextEditingController dateInput = TextEditingController();
     nomInput.text = infraction.nom;
     dateInput.text = infraction.date;
-    List<Widget> textFields = Design.buildTextFieldsEdit(fieldValuesIndicated,
-        fieldIconsIndicated, fieldColorsIndicated, context);
+    List<Widget> textFields = UiService.buildTextFieldsEdit(
+        fieldValuesIndicated,
+        fieldIconsIndicated,
+        fieldColorsIndicated,
+        context);
     List<Widget> AllWidget = [
       ...textFields,
       SizedBox(
@@ -224,7 +231,7 @@ class _InfractionListState extends State<InfractionList> {
             icon: Icon(Icons.edit_outlined),
             label: Text('modifier'),
             onPressed: () {
-              List<Object> result = Design.buildTextFieldsUpdate(
+              List<Object> result = UiService.buildTextFieldsUpdate(
                   fieldValues, fieldIcons, fieldColors, context);
               List<TextEditingController> controllers =
                   result[1] as List<TextEditingController>;
@@ -238,7 +245,7 @@ class _InfractionListState extends State<InfractionList> {
                     TextFormField(
                       keyboardType: TextInputType.name,
                       controller: nomInput,
-                      decoration: Design.buildShowDecoration(infraction.nom,
+                      decoration: UiService.buildShowDecoration(infraction.nom,
                           Icons.perm_contact_cal_outlined, Colors.blue),
                     ),
                     SizedBox(
@@ -248,7 +255,7 @@ class _InfractionListState extends State<InfractionList> {
                       keyboardType: TextInputType.datetime,
                       controller: dateInput,
                       readOnly: true,
-                      decoration: Design.buildShowDecoration(
+                      decoration: UiService.buildShowDecoration(
                           infraction.date, Icons.date_range, Colors.blue),
                       onTap: () async {
                         DateTime? selectedDate = await showDatePicker(
@@ -449,8 +456,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       width: screenSize.width * 0.9,
                       height: screenSize.height * 0.1,
                       child: TextFormField(
-                        decoration: Design.buildInputDecoration("Entrer Le Nom",
-                            Icons.perm_contact_cal_outlined, Colors.blue),
+                        decoration: UiService.buildInputDecoration(
+                            "Entrer Le Nom",
+                            Icons.perm_contact_cal_outlined,
+                            Colors.blue),
                         validator: (String? value) {
                           if (value == null || value.isEmpty) {
                             return "SVP Entrer Le Nom ";
@@ -471,7 +480,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         keyboardType: TextInputType.datetime,
                         controller: dateInput,
                         readOnly: true,
-                        decoration: Design.buildInputDecoration(
+                        decoration: UiService.buildInputDecoration(
                             "Entrer La Date", Icons.date_range, Colors.blue),
                         validator: (String? value) {
                           if (value == null || value.isEmpty) {
@@ -504,7 +513,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     height: screenSize.height * 0.1,
                     child: TextFormField(
                       keyboardType: TextInputType.streetAddress,
-                      decoration: Design.buildInputDecoration(
+                      decoration: UiService.buildInputDecoration(
                           "Entrer l'adresse:  ",
                           Icons.location_on_outlined,
                           Colors.blue),
@@ -663,12 +672,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     width: screenSize.width * 0.9,
                     height: screenSize.height * 0.1,
                     child: TextFormField(
-                      //Design.buildTextFormFieldWithArgs(
+                      //UiService.buildTextFormFieldWithArgs(
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.allow(RegExp(r'^[-0-9.]+$'))
                       ],
-                      decoration: Design.buildInputDecoration(
+                      decoration: UiService.buildInputDecoration(
                           "Entrer la latitude",
                           Icons.gps_fixed_outlined,
                           Colors.blue),
@@ -690,7 +699,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           FilteringTextInputFormatter.allow(
                               RegExp(r'^[-0-9.]+$')),
                         ],
-                        decoration: Design.buildInputDecoration(
+                        decoration: UiService.buildInputDecoration(
                             "Entrer la longitude",
                             Icons.gps_fixed_outlined,
                             Colors.blue),
@@ -709,7 +718,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   _performInfractionCreation(Infraction infraction) async {
-    String result = await ServiceBase.create(infraction);
+    String result = await UiService.performInfractionCreate(infraction);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,
@@ -773,8 +788,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   Future<List<dynamic>> buildList(String title) async {
-    final List<Commune> communes = await ServiceBase.fetchData(
-        http.Client(), title, (json) => Commune.fromJson(json));
+    final List<Commune> communes = await UiService.buildCommuneList();
     return communes;
   }
 }

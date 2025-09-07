@@ -31,12 +31,12 @@ class Infraction {
       nom: json['nom'] as String,
       date: json['date'] as String,
       adresse: json['adresse'] as String,
-      commune_id: json['commune_id'] as int,
-      violant_id: json['violant_id'] as int,
-      agent_id: json['agent_id'] as int,
-      categorie_id: json['categorie_id'] as int,
-      latitude: (json['latitude'] as num).toDouble(),
-      longitude: (json['longitude'] as num).toDouble(),
+      commune_id: int.parse(json['commune_id'].toString()),
+      violant_id: int.parse(json['violant_id'].toString()),
+      agent_id: int.parse(json['agent_id'].toString()),
+      categorie_id: int.parse(json['categorie_id'].toString()),
+      latitude: double.parse(json['latitude'].toString()),
+      longitude: double.parse(json['longitude'].toString()),
     );
   }
 

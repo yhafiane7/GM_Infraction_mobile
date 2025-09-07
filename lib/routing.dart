@@ -7,7 +7,7 @@ import 'package:GM_INFRACTION/models/categorie_model.dart';
 import 'package:GM_INFRACTION/models/commune_model.dart';
 import 'package:GM_INFRACTION/models/violant_model.dart';
 import 'package:GM_INFRACTION/page_base.dart';
-import 'package:GM_INFRACTION/services/service_data.dart';
+import 'package:GM_INFRACTION/services/ui_service.dart';
 
 import 'Agent.dart';
 import 'Categorie.dart';
@@ -32,10 +32,10 @@ class AppRouting {
       DecisionView.Route: (context) => const DecisionView(),
       InfractionView.Route: (context) => FutureBuilder<List<dynamic>>(
             future: Future.wait([
-              getCommunes(),
-              getViolants(),
-              getAgents(),
-              getCategories()
+              UiService.buildCommuneList(),
+              UiService.buildViolantList(),
+              UiService.buildAgentList(),
+              UiService.buildCategorieList()
             ]), // Call both functions using Future.wait
             builder: (context, snapshot) {
               if (snapshot.hasError) {

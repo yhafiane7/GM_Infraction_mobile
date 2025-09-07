@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:GM_INFRACTION/models/commune_model.dart';
-import 'services/service_base.dart';
-import 'services/service_widget.dart';
+import 'services/ui_service.dart';
+import 'services/data_repository.dart';
 
 class CommuneList extends StatefulWidget {
   static String Route = "/commune";
@@ -62,7 +62,7 @@ class _CommuneListState extends State<CommuneList> {
   }
 
   performCommuneUpdate(int index, Commune commune) async {
-    String result = await ServiceBase.update(index, commune);
+    String result = await UiService.performCommuneUpdate(index, commune);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,
@@ -71,14 +71,19 @@ class _CommuneListState extends State<CommuneList> {
   }
 
   _performCommuneDelete(int index, Commune commune) async {
-    String result = await ServiceBase.delete(index, commune);
+    String result = await UiService.performCommuneDelete(index, commune);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
   }
 
   showData(int index, BuildContext context) async {
-    Commune commune = (await ServiceBase.getData<Commune>(
-        index, (jsonData) => Commune.fromJson(jsonData)));
-    if (!context.mounted || commune == null) {
-      return Error();
+    Commune commune = await DataRepository.getCommune(index);
+    if (!context.mounted) {
+      return;
     }
     // here i m preparing attributes for the function in frontEnd file (it needs 3 lists
     List<String> fieldValuesIndicated = [
@@ -111,7 +116,7 @@ class _CommuneListState extends State<CommuneList> {
       Colors.blue,
       Colors.blue,
     ];
-    List<Widget> textFields = Design.buildTextFieldsEdit(
+    List<Widget> textFields = UiService.buildTextFieldsEdit(
         fieldValuesIndicated, fieldIcons, fieldColors, context);
     List<Widget> AllWidget = [
       ...textFields,
@@ -174,7 +179,7 @@ class _CommuneListState extends State<CommuneList> {
             icon: Icon(Icons.edit_outlined),
             label: Text('modifier'),
             onPressed: () {
-              List<Object> result = Design.buildTextFieldsUpdate(
+              List<Object> result = UiService.buildTextFieldsUpdate(
                   fieldValues, fieldIcons, fieldColors, context);
               List<TextEditingController> controllers =
                   result[1] as List<TextEditingController>;
@@ -312,7 +317,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           width: screenSize.width * 0.9,
                           height: screenSize.height * 0.1,
                           child: TextFormField(
-                            decoration: Design.buildInputDecoration(
+                            decoration: UiService.buildInputDecoration(
                                 "Entrer Le pachalik circon",
                                 Icons.person,
                                 Colors.blue),
@@ -331,7 +336,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: screenSize.width * 0.9,
                         height: screenSize.height * 0.1,
                         child: TextFormField(
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer le Caïdat", Icons.person, Colors.blue),
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
@@ -347,7 +352,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: screenSize.width * 0.9,
                         height: screenSize.height * 0.1,
                         child: TextFormField(
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer le Nom", Icons.person, Colors.blue),
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
@@ -363,13 +368,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: screenSize.width * 0.9,
                         height: screenSize.height * 0.1,
                         child: TextFormField(
-                          //Design.buildTextFormFieldWithArgs(
+                          //UiService.buildTextFormFieldWithArgs(
                           keyboardType: TextInputType.number,
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.allow(
                                 RegExp(r'^[-0-9.]+$'))
                           ],
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer la latitude", Icons.person, Colors.blue),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -389,7 +394,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                               FilteringTextInputFormatter.allow(
                                   RegExp(r'^[-0-9.]+$')),
                             ],
-                            decoration: Design.buildInputDecoration(
+                            decoration: UiService.buildInputDecoration(
                                 "Entrer la longitude",
                                 Icons.person,
                                 Colors.blue),
@@ -470,7 +475,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   _performCommuneCreation(Commune commune) async {
-    String result = await ServiceBase.create(commune);
+    String result = await UiService.performCommuneCreate(commune);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,

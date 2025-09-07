@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'services/service_base.dart';
-import 'services/service_widget.dart';
+import 'services/ui_service.dart';
+import 'services/data_repository.dart';
 
 class ViolantList extends StatefulWidget {
-   static String Route = "/violant";
+  static String Route = "/violant";
   const ViolantList({super.key, required this.Violants});
   final List<Violant> Violants;
   @override
@@ -57,7 +57,7 @@ class _ViolantListState extends State<ViolantList> {
   }
 
   performViolantUpdate(int index, Violant violant) async {
-    String result = await ServiceBase.update(index, violant);
+    String result = await UiService.performViolantUpdate(index, violant);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,
@@ -66,14 +66,19 @@ class _ViolantListState extends State<ViolantList> {
   }
 
   _performViolantDelete(int index, Violant violant) async {
-    String result = await ServiceBase.delete(index, violant);
+    String result = await UiService.performViolantDelete(index, violant);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
   }
 
   showData(int index, BuildContext context) async {
-    Violant violant = (await ServiceBase.getData<Violant>(
-        index, (jsonData) => Violant.fromJson(jsonData)));
-    if (!context.mounted || violant == null) {
-      return Error();
+    Violant violant = await DataRepository.getViolant(index);
+    if (!context.mounted) {
+      return;
     }
     // here i m preparing attributes for the function in frontEnd file (it needs 3 lists
     List<String> fieldValuesIndicated = [
@@ -98,7 +103,7 @@ class _ViolantListState extends State<ViolantList> {
       Colors.blue,
     ];
 
-    List<Widget> textFields = Design.buildTextFieldsEdit(
+    List<Widget> textFields = UiService.buildTextFieldsEdit(
         fieldValuesIndicated, fieldIcons, fieldColors, context);
     List<Widget> AllWidget = [
       ...textFields,
@@ -159,8 +164,7 @@ class _ViolantListState extends State<ViolantList> {
             icon: Icon(Icons.edit_outlined),
             label: Text('modifier'),
             onPressed: () {
-              TextEditingController _nomController = TextEditingController();
-              List<Object> result = Design.buildTextFieldsUpdate(
+              List<Object> result = UiService.buildTextFieldsUpdate(
                   fieldValues, fieldIcons, fieldColors, context);
               List<TextEditingController> controllers =
                   result[1] as List<TextEditingController>;
@@ -292,7 +296,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           width: screenSize.width * 0.9,
                           height: screenSize.height * 0.1,
                           child: TextFormField(
-                            decoration: Design.buildInputDecoration(
+                            decoration: UiService.buildInputDecoration(
                                 "Entrer Le Nom du Violant",
                                 Icons.person,
                                 Colors.blue),
@@ -311,7 +315,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: screenSize.width * 0.9,
                         height: screenSize.height * 0.1,
                         child: TextFormField(
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer le Prénom du Violant",
                               Icons.person,
                               Colors.blue),
@@ -329,7 +333,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: screenSize.width * 0.9,
                         height: screenSize.height * 0.1,
                         child: TextFormField(
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer le CIN du Violant",
                               Icons.person,
                               Colors.blue),
@@ -406,7 +410,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   _performViolantCreation(Violant violant) async {
-    String result = await ServiceBase.create(violant);
+    String result = await UiService.performViolantCreate(violant);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,

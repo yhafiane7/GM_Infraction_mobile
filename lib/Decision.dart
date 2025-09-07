@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:GM_INFRACTION/models/decision_model.dart';
-import 'services/service_base.dart';
-import 'services/service_widget.dart';
+import 'services/ui_service.dart';
+import 'services/data_repository.dart';
 
 class DecisionList extends StatefulWidget {
   static String Route = "/decision";
@@ -57,7 +57,7 @@ class _DecisionListState extends State<DecisionList> {
   }
 
   performDecisionUpdate(int index, Decision decision) async {
-    String result = await ServiceBase.update(index, decision);
+    String result = await UiService.performDecisionUpdate(index, decision);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,
@@ -66,14 +66,19 @@ class _DecisionListState extends State<DecisionList> {
   }
 
   _performDecisionDelete(int index, Decision decision) async {
-    String result = await ServiceBase.delete(index, decision);
+    String result = await UiService.performDecisionDelete(index, decision);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
   }
 
   showData(int index, BuildContext context) async {
-    Decision decision = (await ServiceBase.getData<Decision>(
-        index, (jsonData) => Decision.fromJson(jsonData)));
-    if (!context.mounted || decision == null) {
-      return Error();
+    Decision decision = await DataRepository.getDecision(index);
+    if (!context.mounted) {
+      return;
     }
     // here i m preparing attributes for the function in frontEnd file (it needs 3 lists
     List<String> fieldValuesIndicated = [
@@ -108,8 +113,11 @@ class _DecisionListState extends State<DecisionList> {
     TextEditingController dateInput =
         TextEditingController(); // for modifier function
     dateInput.text = decision.date;
-    List<Widget> textFields = Design.buildTextFieldsEdit(fieldValuesIndicated,
-        fieldIconsIndicated, fieldColorsIndicated, context);
+    List<Widget> textFields = UiService.buildTextFieldsEdit(
+        fieldValuesIndicated,
+        fieldIconsIndicated,
+        fieldColorsIndicated,
+        context);
     List<Widget> AllWidget = [
       ...textFields,
       SizedBox(
@@ -173,7 +181,7 @@ class _DecisionListState extends State<DecisionList> {
             icon: Icon(Icons.edit_outlined),
             label: Text('Modifier'),
             onPressed: () {
-              List<Object> result = Design.buildTextFieldsUpdate(
+              List<Object> result = UiService.buildTextFieldsUpdate(
                   fieldValues, fieldIcons, fieldColors, context);
               List<TextEditingController> controllers =
                   result[1] as List<TextEditingController>;
@@ -192,7 +200,7 @@ class _DecisionListState extends State<DecisionList> {
                       keyboardType: TextInputType.datetime,
                       controller: dateInput,
                       readOnly: true,
-                      decoration: Design.buildInputDecoration(
+                      decoration: UiService.buildInputDecoration(
                           decision.date, Icons.person, Colors.blue),
                       onTap: () async {
                         DateTime? selectedDate = await showDatePicker(
@@ -344,7 +352,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             keyboardType: TextInputType.datetime,
                             controller: dateInput,
                             readOnly: true,
-                            decoration: Design.buildInputDecoration(
+                            decoration: UiService.buildInputDecoration(
                                 "Entrer La Date :", Icons.person, Colors.blue),
                             validator: (String? value) {
                               if (value == null || value.isEmpty) {
@@ -377,7 +385,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: screenSize.width * 0.9,
                         height: screenSize.height * 0.1,
                         child: TextFormField(
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer la Decision", Icons.person, Colors.blue),
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
@@ -397,7 +405,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.digitsOnly
                           ],
-                          decoration: Design.buildInputDecoration(
+                          decoration: UiService.buildInputDecoration(
                               "Entrer le Numero d'Infraction",
                               Icons.person,
                               Colors.blue),
@@ -479,7 +487,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   _performDecisionCreation(Decision decision) async {
-    String result = await ServiceBase.create(decision);
+    String result = await UiService.performDecisionCreate(decision);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor:
+          result.contains('Error') ? Colors.red[400] : Colors.green[400],
+    ));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
       behavior: SnackBarBehavior.floating,

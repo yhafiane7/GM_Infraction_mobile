@@ -22,8 +22,8 @@ class Commune {
       pachalikcircon: json['pachalik-circon'] as String,
       caidat: json['caidat'] as String,
       nom: json['nom'] as String,
-      latitude: json['latitude'].toDouble(),
-      longitude: json['longitude'].toDouble(),
+      latitude: double.parse(json['latitude'].toString()),
+      longitude: double.parse(json['longitude'].toString()),
     );
   }
   Map toJson() => {

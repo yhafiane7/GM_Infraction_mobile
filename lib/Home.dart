@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gmsoft_pkg/config/menu.dart';
-import 'package:gmsoft_pkg/dashboard_item_view.dart';
+import 'package:GM_INFRACTION/models/button_option.dart';
+import 'package:GM_INFRACTION/widgets/dashboard_view.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(child: DashboardItemView(Home.Options)),
+      body: DashboardView(options: Home.Options),
       // Container(
       //     child: Column(
       //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
