@@ -1,5 +1,9 @@
 # GM_INFRACTION Flutter Application
 
+[![Development CI](https://github.com/yhafiane7/GM_Infraction_mobile/actions/workflows/ci.yml/badge.svg)](https://github.com/yhafiane7/GM_Infraction_mobile/actions/workflows/ci.yml)
+[![Flutter](https://img.shields.io/badge/Flutter-3.16.0-blue.svg)](https://flutter.dev/)
+[![Dart](https://img.shields.io/badge/Dart-2.19.6+-blue.svg)](https://dart.dev/)
+
 ## Overview
 
 GM_INFRACTION is a Flutter mobile application designed to help Moroccan communes manage infractions reported by agents. The system tracks infractions with detailed information including the violator, location, category, and subsequent decisions. The app supports full CRUD (Create, Read, Update, Delete) operations on the key entities such as Agents, Violants (violators), Communes, Categories, Decisions, and Infractions.
@@ -52,6 +56,31 @@ This app communicates with a Laravel backend API that handles data storage and b
   - Dart classes for each data entity with `fromJson` and `toJson` methods.
 
 ---
+
+## Development CI
+
+This project uses GitHub Actions for development workflow:
+
+- **Automated Testing**: Runs all tests on every push to `dev` branch
+- **Code Analysis**: Performs Flutter analyze and formatting checks
+- **Debug Build**: Builds debug APK for testing
+- **Quick Feedback**: Fast CI pipeline focused on development
+
+### Local Development Testing
+
+To run the same checks locally as the CI pipeline:
+
+```bash
+# Windows PowerShell
+.\scripts\ci_test.ps1
+
+# Or run individual commands:
+flutter pub get
+flutter test --reporter=expanded
+flutter analyze --no-fatal-infos
+dart format --output=none --set-exit-if-changed .
+flutter build apk --debug
+```
 
 ## Setup & Run
 
