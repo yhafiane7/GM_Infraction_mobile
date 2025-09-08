@@ -7,13 +7,17 @@ class ApiClient {
 
   //------------------------------------fetch Data from api-------------------------------------------------------//
   static Future<List<T>> fetchData<T>(
-      T Function(Map<String, dynamic>) fromJson) async {
-    return fetchDataWithClient(http.Client(), fromJson);
+      {required String endpoint,
+      required T Function(Map<String, dynamic>) fromJson}) async {
+    return fetchDataWithClient(
+        client: http.Client(), endpoint: endpoint, fromJson: fromJson);
   }
 
-  static Future<List<T>> fetchDataWithClient<T>(
-      http.Client client, T Function(Map<String, dynamic>) fromJson) async {
-    String endpoint = T.toString().toLowerCase();
+  static Future<List<T>> fetchDataWithClient<T>({
+    required http.Client client,
+    required String endpoint,
+    required T Function(Map<String, dynamic>) fromJson,
+  }) async {
     final response = await client.get(Uri.parse('$baseUrl/$endpoint'));
 
     if (response.statusCode == 200) {
@@ -26,14 +30,24 @@ class ApiClient {
   }
 
   //------------------------------------get Data from api-------------------------------------------------------//
-  static Future<T> getData<T>(
-      int index, T Function(Map<String, dynamic>) fromJson) async {
-    return getDataWithClient(http.Client(), index, fromJson);
+  static Future<T> getData<T>({
+    required String endpoint,
+    required int index,
+    required T Function(Map<String, dynamic>) fromJson,
+  }) async {
+    return getDataWithClient(
+        client: http.Client(),
+        endpoint: endpoint,
+        index: index,
+        fromJson: fromJson);
   }
 
-  static Future<T> getDataWithClient<T>(http.Client client, int index,
-      T Function(Map<String, dynamic>) fromJson) async {
-    String endpoint = T.toString().toLowerCase();
+  static Future<T> getDataWithClient<T>({
+    required http.Client client,
+    required String endpoint,
+    required int index,
+    required T Function(Map<String, dynamic>) fromJson,
+  }) async {
     final response = await client.get(Uri.parse('$baseUrl/$endpoint/$index'));
 
     if (response.statusCode == 200) {
@@ -45,13 +59,16 @@ class ApiClient {
   }
 
   //------------------------------------post Data to api-------------------------------------------------------//
-  static Future<String> postData<T>(T object) async {
-    return postDataWithClient(http.Client(), object);
+  static Future<String> postData<T>(
+      {required String endpoint, required T object}) async {
+    return postDataWithClient(
+        client: http.Client(), endpoint: endpoint, object: object);
   }
 
   static Future<String> postDataWithClient<T>(
-      http.Client client, T object) async {
-    String endpoint = T.toString().toLowerCase();
+      {required http.Client client,
+      required String endpoint,
+      required T object}) async {
     final url = '$baseUrl/$endpoint';
     final body = jsonEncode(object);
 
@@ -84,13 +101,20 @@ class ApiClient {
   }
 
   //------------------------------------update Data to api-------------------------------------------------------//
-  static Future<String> updateData<T>(int index, T object) async {
-    return updateDataWithClient(http.Client(), index, object);
+  static Future<String> updateData<T>(
+      {required String endpoint, required int index, required T object}) async {
+    return updateDataWithClient(
+        client: http.Client(),
+        endpoint: endpoint,
+        index: index,
+        object: object);
   }
 
   static Future<String> updateDataWithClient<T>(
-      http.Client client, int index, T object) async {
-    String endpoint = T.toString().toLowerCase();
+      {required http.Client client,
+      required String endpoint,
+      required int index,
+      required T object}) async {
     final response = await client.put(
       Uri.parse('$baseUrl/$endpoint/$index'),
       headers: {'Content-Type': 'application/json'},
@@ -105,13 +129,20 @@ class ApiClient {
   }
 
   //------------------------------------delete Data from api-------------------------------------------------------//
-  static Future<String> deleteData<T>(int index, T object) async {
-    return deleteDataWithClient(http.Client(), index, object);
+  static Future<String> deleteData<T>(
+      {required String endpoint, required int index, required T object}) async {
+    return deleteDataWithClient(
+        client: http.Client(),
+        endpoint: endpoint,
+        index: index,
+        object: object);
   }
 
   static Future<String> deleteDataWithClient<T>(
-      http.Client client, int index, T object) async {
-    String endpoint = T.toString().toLowerCase();
+      {required http.Client client,
+      required String endpoint,
+      required int index,
+      required T object}) async {
     final response = await client.delete(
       Uri.parse('$baseUrl/$endpoint/$index'),
       headers: {'Content-Type': 'application/json'},
