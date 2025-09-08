@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:GM_INFRACTION/config/app_theme.dart';
 import 'package:GM_INFRACTION/routing.dart';
+import 'package:GM_INFRACTION/web_wrapper.dart';
+import 'package:flutter/foundation.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(kIsWeb ? const WebWrapper() : MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
