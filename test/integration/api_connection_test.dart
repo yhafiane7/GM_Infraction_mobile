@@ -5,15 +5,15 @@ import 'package:GM_INFRACTION/config/app_config.dart';
 void main() {
   group('API Integration Tests', () {
     test('should have valid API configuration', () {
-      // Test that we have valid API URLs configured
+      // Act & Assert
       expect(AppConfig.currentBaseUrl, isNotEmpty);
       expect(AppConfig.productionUrl, isNotEmpty);
       expect(AppConfig.devUrl, isNotEmpty);
     });
 
     test('should connect to API (basic connectivity)', () async {
+      // Act & Assert
       try {
-        // Test basic connectivity to the API
         final response = await http.get(
           Uri.parse('${AppConfig.currentBaseUrl}/agent'),
           headers: {'Content-Type': 'application/json'},
@@ -24,6 +24,21 @@ void main() {
         expect(response.statusCode, greaterThan(0));
       } catch (e) {
         // This is expected if the API server is not running
+        expect(e, isA<Exception>());
+      }
+    });
+
+    test('should handle API timeout gracefully', () async {
+      // Act & Assert
+      try {
+        final response = await http.get(
+          Uri.parse('${AppConfig.currentBaseUrl}/agent'),
+          headers: {'Content-Type': 'application/json'},
+        ).timeout(const Duration(seconds: 5));
+
+        expect(response.statusCode, isA<int>());
+      } catch (e) {
+        // Expected if server is slow or unreachable
         expect(e, isA<Exception>());
       }
     });

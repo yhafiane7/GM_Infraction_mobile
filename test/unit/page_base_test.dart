@@ -6,47 +6,65 @@ void main() {
   group('Page Base Tests', () {
     testWidgets('BasePage should display correct title',
         (WidgetTester tester) async {
+      // Arrange
+      const testTitle = 'Test Title';
+
+      // Act
       await tester.pumpWidget(
         MaterialApp(
-          home: const BasePage(title: 'Test Title'),
+          home: const BasePage(title: testTitle),
         ),
       );
 
-      expect(find.text('Test Title'), findsOneWidget);
+      // Assert
+      expect(find.text(testTitle), findsOneWidget);
       expect(find.byType(AppBar), findsOneWidget);
     });
 
     testWidgets('BasePage should have add button in app bar',
         (WidgetTester tester) async {
+      // Arrange
+      const testTitle = 'Test Title';
+
+      // Act
       await tester.pumpWidget(
         MaterialApp(
-          home: const BasePage(title: 'Test Title'),
+          home: const BasePage(title: testTitle),
         ),
       );
 
+      // Assert
       expect(find.byIcon(Icons.add_circle), findsOneWidget);
     });
 
     testWidgets('BasePage should have refresh indicator',
         (WidgetTester tester) async {
+      // Arrange
+      const testTitle = 'Test Title';
+
+      // Act
       await tester.pumpWidget(
         MaterialApp(
-          home: const BasePage(title: 'Test Title'),
+          home: const BasePage(title: testTitle),
         ),
       );
 
+      // Assert
       expect(find.byType(RefreshIndicator), findsOneWidget);
     });
 
     testWidgets('buildtheList should return FutureBuilder',
         (WidgetTester tester) async {
+      // Act
       final futureBuilder = buildtheList('Agent');
 
+      // Assert
       expect(futureBuilder, isA<FutureBuilder<List<dynamic>>>());
     });
 
     testWidgets('buildtheList should handle loading state',
         (WidgetTester tester) async {
+      // Act
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -55,17 +73,19 @@ void main() {
         ),
       );
 
-      // Should show loading indicator initially
+      // Assert
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
 
     test('buildList should throw exception for invalid title', () async {
+      // Act & Assert
       expect(() => buildList('invalid'), throwsException);
     });
 
     testWidgets('BasePage should handle different titles',
         (WidgetTester tester) async {
-      final titles = [
+      // Arrange
+      const titles = [
         'Agent',
         'Violant',
         'Categorie',
@@ -74,6 +94,7 @@ void main() {
         'Infraction'
       ];
 
+      // Act & Assert
       for (final title in titles) {
         await tester.pumpWidget(
           MaterialApp(
@@ -91,3 +112,4 @@ void main() {
     });
   });
 }
+
