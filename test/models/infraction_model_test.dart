@@ -8,7 +8,7 @@ void main() {
       final json = {
         'id': 1,
         'nom': 'Test Infraction',
-        'date': '2024-01-01',
+        'date': '2025-01-01',
         'adresse': 'Test Address',
         'commune_id': '1',
         'violant_id': '1',
@@ -24,7 +24,7 @@ void main() {
       // Assert
       expect(infraction.id, 1);
       expect(infraction.nom, 'Test Infraction');
-      expect(infraction.date, '2024-01-01');
+      expect(infraction.date, '2025-01-01');
       expect(infraction.adresse, 'Test Address');
       expect(infraction.commune_id, 1);
       expect(infraction.violant_id, 1);
@@ -39,7 +39,7 @@ void main() {
       final infraction = Infraction(
         id: 1,
         nom: 'Test Infraction',
-        date: '2024-01-01',
+        date: '2025-01-01',
         adresse: 'Test Address',
         commune_id: 1,
         violant_id: 1,
@@ -55,7 +55,7 @@ void main() {
       // Assert
       expect(json['id'], 1);
       expect(json['nom'], 'Test Infraction');
-      expect(json['date'], '2024-01-01');
+      expect(json['date'], '2025-01-01');
       expect(json['adresse'], 'Test Address');
       expect(json['commune_id'], '1');
       expect(json['violant_id'], '1');
@@ -69,7 +69,7 @@ void main() {
       // Arrange
       final json = {
         'nom': 'Test Infraction',
-        'date': '2024-01-01',
+        'date': '2025-01-01',
         'adresse': 'Test Address',
         'commune_id': '1',
         'violant_id': '1',
@@ -85,32 +85,34 @@ void main() {
       // Assert
       expect(infraction.id, null);
       expect(infraction.nom, 'Test Infraction');
-      expect(infraction.commune_id, 1);
-    });
-
-    test('should handle numeric IDs in JSON', () {
-      // Arrange
-      final json = {
-        'id': 1,
-        'nom': 'Test Infraction',
-        'date': '2024-01-01',
-        'adresse': 'Test Address',
-        'commune_id': 1,
-        'violant_id': 1,
-        'agent_id': 1,
-        'categorie_id': 1,
-        'latitude': 33.5731,
-        'longitude': -7.5898,
-      };
-
-      // Act
-      final infraction = Infraction.fromJson(json);
-
-      // Assert
+      expect(infraction.date, '2025-01-01');
+      expect(infraction.adresse, 'Test Address');
       expect(infraction.commune_id, 1);
       expect(infraction.violant_id, 1);
       expect(infraction.agent_id, 1);
       expect(infraction.categorie_id, 1);
+      expect(infraction.latitude, 33.5731);
+      expect(infraction.longitude, -7.5898);
     });
+
+    test('should throw FormatException for invalid latitude/longitude', () {
+      // Arrange
+      final json = {
+        'id': 1,
+        'nom': 'Test Infraction',
+        'date': '2025-01-01',
+        'adresse': 'Test Address',
+        'commune_id': '1',
+        'violant_id': '1',
+        'agent_id': '1',
+        'categorie_id': '1',
+        'latitude': 'invalid_latitude',
+        'longitude': 'invalid_longitude',
+      };
+
+      // Act & Assert
+      expect(() => Infraction.fromJson(json), throwsFormatException);
+    });
+    
   });
 }

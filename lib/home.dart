@@ -13,6 +13,11 @@ class Home extends StatelessWidget {
       iconData: Icons.category,
     ),
     ButtonOption(
+      route: "/categorie-v2",
+      text: 'CATEGORIE V2',
+      iconData: Icons.category_outlined,
+    ),
+    ButtonOption(
         route: "/commune",
         text: 'COMMUNE',
         isVisible: true,

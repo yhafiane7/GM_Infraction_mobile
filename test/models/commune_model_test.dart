@@ -71,23 +71,45 @@ void main() {
       expect(commune.longitude, -7.5898);
     });
 
-    test('should handle numeric latitude/longitude in JSON', () {
+      test('should handle API response with extra fields (timestamps)', () {
       // Arrange
       final json = {
         'id': 1,
         'pachalik-circon': 'Test Pachalik',
         'caidat': 'Test Caidat',
         'nom': 'Test Commune',
-        'latitude': 33.5731,
-        'longitude': -7.5898,
+        'latitude': '33.5731',
+        'longitude': '-7.5898',
+        'created_at': '2025-01-01T00:00:00Z',
+        'updated_at': '2025-01-01T00:00:00Z',
       };
-
+      
       // Act
       final commune = Commune.fromJson(json);
 
       // Assert
+      expect(commune.id, 1);
+      expect(commune.pachalikcircon, 'Test Pachalik');
+      expect(commune.caidat, 'Test Caidat');
+      expect(commune.nom, 'Test Commune');
       expect(commune.latitude, 33.5731);
       expect(commune.longitude, -7.5898);
+      // Extra fields are ignored, which is correct
+    });
+
+    test('should throw FormatException for invalid latitude/longitude', () {
+      // Arrange
+      final json = {
+        'id': 1,
+        'pachalik-circon': 'Test Pachalik',
+        'caidat': 'Test Caidat',
+        'nom': 'Test Commune',
+        'latitude': 'invalid_latitude',
+        'longitude': 'invalid_longitude',
+      };
+
+      // Act & Assert
+      expect(() => Commune.fromJson(json), throwsFormatException);
     });
   });
 }

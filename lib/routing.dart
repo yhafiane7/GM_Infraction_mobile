@@ -14,6 +14,7 @@ import 'categorie.dart';
 import 'commune.dart';
 import 'infraction.dart';
 import 'violant.dart';
+import 'features/categorie/categorie.dart' as categorie_v2;
 
 class AppRouting {
   static Map<String, Widget Function(BuildContext)> main(BuildContext context) {
@@ -22,6 +23,7 @@ class AppRouting {
       AgentList.Route: (context) => const BasePage(title: 'Agent'),
       ViolantList.Route: (context) => const BasePage(title: 'Violant'),
       CategorieList.Route: (context) => const BasePage(title: 'Categorie'),
+      '/categorie-v2': (context) => const BasePage(title: 'Categorie V2'),
       CommuneList.Route: (context) => const BasePage(title: 'Commune'),
       DecisionList.Route: (context) => const BasePage(title: 'Decision'),
       InfractionList.Route: (context) => const BasePage(title: 'Infraction'),
@@ -29,6 +31,8 @@ class AppRouting {
       CommuneView.Route: (context) => const CommuneView(),
       ViolantView.Route: (context) => const ViolantView(),
       CategorieView.Route: (context) => const CategorieView(),
+      '/categorie-v2/create': (context) =>
+          const categorie_v2.CategorieViewWidget(),
       DecisionView.Route: (context) => const DecisionView(),
       InfractionView.Route: (context) => FutureBuilder<List<dynamic>>(
             future: Future.wait([

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:GM_INFRACTION/config/app_theme.dart';
 import 'package:GM_INFRACTION/routing.dart';
 import 'package:GM_INFRACTION/web_wrapper.dart';
+import 'package:GM_INFRACTION/features/categorie/widgets/snackbar_service.dart';
 import 'package:flutter/foundation.dart';
 
 void main() {
@@ -11,14 +12,17 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //final config = context.read(flavorConfigProvider);
     return MaterialApp(
       theme: AppTheme.lightTheme,
-      // title: config.state.appTitle,
-      // theme: config.state.theme,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: AppRouting.main(context),
+      builder: (context, child) {
+        return ScaffoldMessenger(
+          key: SnackbarService.scaffoldMessengerKey,
+          child: child!,
+        );
+      },
     );
   }
 }

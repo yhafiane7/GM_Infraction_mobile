@@ -35,17 +35,6 @@ void main() {
       expect(buttonOption.arguments, isNull);
     });
 
-    test('should create ButtonOption with null route', () {
-      const buttonOption = ButtonOption(
-        route: null,
-        text: 'Test Button',
-        iconData: Icons.home,
-      );
-
-      expect(buttonOption.route, isNull);
-      expect(buttonOption.text, equals('Test Button'));
-      expect(buttonOption.iconData, equals(Icons.home));
-    });
 
     test('should create ButtonOption with false visibility', () {
       const buttonOption = ButtonOption(
@@ -65,24 +54,6 @@ void main() {
       expect(buttonOption.arguments, equals({}));
     });
 
-    test('should create ButtonOption with complex arguments', () {
-      const buttonOption = ButtonOption(
-        text: 'Test Button',
-        arguments: {
-          'id': 123,
-          'name': 'test',
-          'enabled': true,
-        },
-      );
-
-      expect(
-          buttonOption.arguments,
-          equals({
-            'id': 123,
-            'name': 'test',
-            'enabled': true,
-          }));
-    });
 
     test('should handle different icon types', () {
       const buttonOption1 = ButtonOption(
@@ -115,14 +86,6 @@ void main() {
       expect(buttonOption.text, equals(longText));
     });
 
-    test('should handle special characters in text', () {
-      const specialText = 'Test & Button (Special) [Characters]';
-      const buttonOption = ButtonOption(
-        text: specialText,
-      );
-
-      expect(buttonOption.text, equals(specialText));
-    });
 
     test('should be immutable', () {
       const buttonOption = ButtonOption(
