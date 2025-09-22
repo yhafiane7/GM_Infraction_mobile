@@ -10,7 +10,7 @@ import 'package:GM_INFRACTION/page_base.dart';
 import 'package:GM_INFRACTION/services/ui_service.dart';
 
 import 'agent.dart';
-import 'categorie.dart';
+// Removed old categorie.dart implementation
 import 'commune.dart';
 import 'infraction.dart';
 import 'violant.dart';
@@ -22,16 +22,15 @@ class AppRouting {
       '/': (context) => const Home(),
       AgentList.Route: (context) => const BasePage(title: 'Agent'),
       ViolantList.Route: (context) => const BasePage(title: 'Violant'),
-      CategorieList.Route: (context) => const BasePage(title: 'Categorie'),
-      '/categorie-v2': (context) => const BasePage(title: 'Categorie V2'),
+      categorie_v2.CategorieListWidget.route: (context) =>
+          const BasePage(title: 'Categorie'),
       CommuneList.Route: (context) => const BasePage(title: 'Commune'),
       DecisionList.Route: (context) => const BasePage(title: 'Decision'),
       InfractionList.Route: (context) => const BasePage(title: 'Infraction'),
       AgentView.Route: (context) => const AgentView(),
       CommuneView.Route: (context) => const CommuneView(),
       ViolantView.Route: (context) => const ViolantView(),
-      CategorieView.Route: (context) => const CategorieView(),
-      '/categorie-v2/create': (context) =>
+      categorie_v2.CategorieViewWidget.route: (context) =>
           const categorie_v2.CategorieViewWidget(),
       DecisionView.Route: (context) => const DecisionView(),
       InfractionView.Route: (context) => FutureBuilder<List<dynamic>>(

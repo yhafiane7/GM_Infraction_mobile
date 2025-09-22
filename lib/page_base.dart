@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:GM_INFRACTION/agent.dart';
-import 'package:GM_INFRACTION/categorie.dart';
 import 'package:GM_INFRACTION/features/categorie/categorie.dart'
     as categorie_v2;
 import 'package:GM_INFRACTION/commune.dart';
@@ -84,9 +83,6 @@ FutureBuilder<List<dynamic>> buildtheList(String title) {
             case 'Violant':
               return ViolantList(Violants: snapshot.data! as List<Violant>);
             case 'Categorie':
-              return CategorieList(
-                  Categories: snapshot.data! as List<Categorie>);
-            case 'Categorie V2':
               return categorie_v2.CategorieListWidget(
                   categories: snapshot.data! as List<Categorie>,
                   controller: categorie_v2.CategorieController());
