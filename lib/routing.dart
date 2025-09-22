@@ -11,7 +11,7 @@ import 'package:GM_INFRACTION/services/ui_service.dart';
 
 import 'agent.dart';
 // Removed old categorie.dart implementation
-import 'commune.dart';
+import 'features/commune/commune.dart' as commune_v2;
 import 'infraction.dart';
 import 'violant.dart';
 import 'features/categorie/categorie.dart' as categorie_v2;
@@ -24,11 +24,13 @@ class AppRouting {
       ViolantList.Route: (context) => const BasePage(title: 'Violant'),
       categorie_v2.CategorieListWidget.route: (context) =>
           const BasePage(title: 'Categorie'),
-      CommuneList.Route: (context) => const BasePage(title: 'Commune'),
+      commune_v2.CommuneListWidget.route: (context) =>
+          const BasePage(title: 'Commune'),
       DecisionList.Route: (context) => const BasePage(title: 'Decision'),
       InfractionList.Route: (context) => const BasePage(title: 'Infraction'),
       AgentView.Route: (context) => const AgentView(),
-      CommuneView.Route: (context) => const CommuneView(),
+      commune_v2.CommuneViewWidget.route: (context) =>
+          const commune_v2.CommuneViewWidget(),
       ViolantView.Route: (context) => const ViolantView(),
       categorie_v2.CategorieViewWidget.route: (context) =>
           const categorie_v2.CategorieViewWidget(),

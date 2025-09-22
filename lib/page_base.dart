@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:GM_INFRACTION/agent.dart';
 import 'package:GM_INFRACTION/features/categorie/categorie.dart'
     as categorie_v2;
-import 'package:GM_INFRACTION/commune.dart';
+import 'package:GM_INFRACTION/features/commune/commune.dart' as commune_v2;
 import 'package:GM_INFRACTION/decision.dart';
 import 'package:GM_INFRACTION/infraction.dart';
 import 'package:GM_INFRACTION/violant.dart';
@@ -87,7 +87,9 @@ FutureBuilder<List<dynamic>> buildtheList(String title) {
                   categories: snapshot.data! as List<Categorie>,
                   controller: categorie_v2.CategorieController());
             case 'Commune':
-              return CommuneList(Communes: snapshot.data! as List<Commune>);
+              return commune_v2.CommuneListWidget(
+                  communes: snapshot.data! as List<Commune>,
+                  controller: commune_v2.CommuneController());
             case 'Decision':
               return DecisionList(Decisions: snapshot.data! as List<Decision>);
             case 'Infraction':

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:GM_INFRACTION/models/categorie_model.dart';
 import 'package:GM_INFRACTION/features/categorie/controllers/categorie_controller.dart';
-import 'package:GM_INFRACTION/features/categorie/widgets/snackbar_service.dart';
+import 'package:GM_INFRACTION/services/snackbar_service.dart';
 
 /// Dialog for editing category
 class CategorieEditDialog extends StatefulWidget {
