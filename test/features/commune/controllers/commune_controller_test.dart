@@ -4,16 +4,17 @@ import 'package:GM_INFRACTION/models/commune_model.dart';
 
 void main() {
   group('CommuneController', () {
-    test('loadCommunes toggles loading and populates list', () async {
-      final controller = CommuneController();
-      await controller.loadCommunes();
-      expect(controller.isLoading, false);
-      expect(controller.errorMessage, isNull);
-      expect(controller.communes, isA<List<Commune>>());
-      
-    },
-    //increase timeout to 60 seconds
-    timeout: const Timeout(Duration(seconds: 60)),
+    test(
+      'loadCommunes toggles loading and populates list',
+      () async {
+        final controller = CommuneController();
+        await controller.loadCommunes();
+        expect(controller.isLoading, false);
+        expect(controller.errorMessage, isNull);
+        expect(controller.communes, isA<List<Commune>>());
+      },
+      //increase timeout to 60 seconds
+      timeout: const Timeout(Duration(seconds: 60)),
     );
 
     test('createCommune returns message and toggles loading', () async {

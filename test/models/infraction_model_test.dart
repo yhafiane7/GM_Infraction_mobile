@@ -113,6 +113,5 @@ void main() {
       // Act & Assert
       expect(() => Infraction.fromJson(json), throwsFormatException);
     });
-    
   });
 }

@@ -6,6 +6,7 @@ import 'package:GM_INFRACTION/services/ui_service.dart' as ui;
 import 'package:mockito/mockito.dart';
 
 class _RepoMock extends Mock implements repo.DataRepository {}
+
 class _UiMock extends Mock implements ui.UiService {}
 
 void main() {
@@ -58,5 +59,3 @@ void main() {
     });
   });
 }
-
-

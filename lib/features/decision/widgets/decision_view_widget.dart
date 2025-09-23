@@ -21,5 +21,3 @@ class DecisionViewWidget extends StatelessWidget {
     );
   }
 }
-
-

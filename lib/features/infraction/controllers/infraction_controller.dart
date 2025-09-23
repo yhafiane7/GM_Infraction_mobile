@@ -93,5 +93,3 @@ class InfractionController extends ChangeNotifier {
     _setError(null);
   }
 }
-
-

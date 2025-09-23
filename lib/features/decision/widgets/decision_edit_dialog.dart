@@ -146,7 +146,8 @@ class _DecisionEditDialogState extends State<DecisionEditDialog> {
         id: widget.decision.id,
         date: _dateController.text,
         decisionPrise: _decisionController.text,
-        infractionId: int.tryParse(_infractionIdController.text) ?? widget.decision.infractionId,
+        infractionId: int.tryParse(_infractionIdController.text) ??
+            widget.decision.infractionId,
       );
       widget.controller!
           .updateDecision(widget.decisionIndex, updated)
@@ -164,5 +165,3 @@ class _DecisionEditDialogState extends State<DecisionEditDialog> {
     }
   }
 }
-
-

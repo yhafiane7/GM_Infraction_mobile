@@ -119,8 +119,7 @@ class _InfractionFormWidgetState extends State<InfractionFormWidget> {
 
             if (selectedDate != null) {
               setState(() {
-                _dateInput.text =
-                    DateFormat('yyyy-MM-dd').format(selectedDate);
+                _dateInput.text = DateFormat('yyyy-MM-dd').format(selectedDate);
               });
             }
           },
@@ -396,8 +395,7 @@ class _InfractionFormWidgetState extends State<InfractionFormWidget> {
       setState(() => _isSubmitting = true);
       widget.controller!.createInfraction(infraction).then((result) {
         setState(() => _isSubmitting = false);
-        SnackbarService.showMessage(result,
-            isError: result.contains('Error'));
+        SnackbarService.showMessage(result, isError: result.contains('Error'));
         if (!result.contains('Error')) {
           _formKey.currentState?.reset();
           _dateInput.clear();
@@ -411,5 +409,3 @@ class _InfractionFormWidgetState extends State<InfractionFormWidget> {
     }
   }
 }
-
-

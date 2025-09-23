@@ -71,7 +71,7 @@ void main() {
       expect(commune.longitude, -7.5898);
     });
 
-      test('should handle API response with extra fields (timestamps)', () {
+    test('should handle API response with extra fields (timestamps)', () {
       // Arrange
       final json = {
         'id': 1,
@@ -83,7 +83,7 @@ void main() {
         'created_at': '2025-01-01T00:00:00Z',
         'updated_at': '2025-01-01T00:00:00Z',
       };
-      
+
       // Act
       final commune = Commune.fromJson(json);
 

@@ -35,7 +35,6 @@ void main() {
       expect(buttonOption.arguments, isNull);
     });
 
-
     test('should create ButtonOption with false visibility', () {
       const buttonOption = ButtonOption(
         text: 'Test Button',
@@ -53,7 +52,6 @@ void main() {
 
       expect(buttonOption.arguments, equals({}));
     });
-
 
     test('should handle different icon types', () {
       const buttonOption1 = ButtonOption(
@@ -85,7 +83,6 @@ void main() {
 
       expect(buttonOption.text, equals(longText));
     });
-
 
     test('should be immutable', () {
       const buttonOption = ButtonOption(

@@ -30,7 +30,8 @@ class TestClient extends http.BaseClient {
   @override
   Future<http.Response> delete(Uri url,
       {Map<String, String>? headers, Object? body, Encoding? encoding}) async {
-    if (deleteResponse == null) throw StateError('No deleteResponse configured');
+    if (deleteResponse == null)
+      throw StateError('No deleteResponse configured');
     return deleteResponse!;
   }
 

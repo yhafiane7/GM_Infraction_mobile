@@ -93,5 +93,3 @@ class DecisionController extends ChangeNotifier {
     _setError(null);
   }
 }
-
-

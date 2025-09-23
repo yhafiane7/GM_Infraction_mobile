@@ -9,7 +9,8 @@ class DecisionListWidget extends StatelessWidget {
   final List<Decision> decisions;
   final DecisionController? controller;
 
-  const DecisionListWidget({super.key, required this.decisions, this.controller});
+  const DecisionListWidget(
+      {super.key, required this.decisions, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,8 @@ class DecisionListWidget extends StatelessWidget {
           DataCell(Text(decision.date)),
           DataCell(Text(decision.decisionPrise)),
           DataCell(Text(decision.infractionId.toString())),
-          DataCell(Visibility(visible: false, child: Text(decision.id.toString()))),
+          DataCell(
+              Visibility(visible: false, child: Text(decision.id.toString()))),
         ],
         onLongPress: () => _handleLongPress(context, decision, index),
       );
@@ -72,5 +74,3 @@ class DecisionListWidget extends StatelessWidget {
     }
   }
 }
-
-

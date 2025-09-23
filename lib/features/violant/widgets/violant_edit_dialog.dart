@@ -145,5 +145,3 @@ class _ViolantEditDialogState extends State<ViolantEditDialog> {
     }
   }
 }
-
-

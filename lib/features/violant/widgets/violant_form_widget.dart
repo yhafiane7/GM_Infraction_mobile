@@ -160,8 +160,7 @@ class _ViolantFormWidgetState extends State<ViolantFormWidget> {
       setState(() => _isSubmitting = true);
       widget.controller!.createViolant(violant).then((result) {
         setState(() => _isSubmitting = false);
-        SnackbarService.showMessage(result,
-            isError: result.contains('Error'));
+        SnackbarService.showMessage(result, isError: result.contains('Error'));
         if (!result.contains('Error')) {
           _formKey.currentState?.reset();
           _nom = '';
@@ -177,5 +176,3 @@ class _ViolantFormWidgetState extends State<ViolantFormWidget> {
     }
   }
 }
-
-

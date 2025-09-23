@@ -14,8 +14,7 @@ void main() {
 
     test('returns item on 200', () async {
       client.getResponse = http.Response(
-          '{"id":1,"nom":"A","prenom":"B","tel":"1234567890","cin":"X1"}',
-          200);
+          '{"id":1,"nom":"A","prenom":"B","tel":"1234567890","cin":"X1"}', 200);
 
       final result = await ApiClient.getDataWithClient<Agent>(
         client: client,

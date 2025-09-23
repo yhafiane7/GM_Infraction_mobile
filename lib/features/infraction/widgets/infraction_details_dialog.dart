@@ -65,7 +65,8 @@ class InfractionDetailsDialog extends StatelessWidget {
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.redAccent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           ),
           icon: const Icon(Icons.delete_forever_outlined),
           label: const Text('Supprimer'),
@@ -74,7 +75,8 @@ class InfractionDetailsDialog extends StatelessWidget {
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.orange[300],
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           ),
           icon: const Icon(Icons.edit_outlined),
           label: const Text('Modifier'),
@@ -127,7 +129,8 @@ class InfractionDetailsDialog extends StatelessWidget {
         SnackbarService.showMessage('Error: $error', isError: true);
       });
     } else {
-      SnackbarService.showMessage('Controller not available or Infraction ID is null',
+      SnackbarService.showMessage(
+          'Controller not available or Infraction ID is null',
           isError: true);
     }
   }
@@ -145,5 +148,3 @@ class InfractionDetailsDialog extends StatelessWidget {
     );
   }
 }
-
-

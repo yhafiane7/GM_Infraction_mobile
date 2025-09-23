@@ -9,7 +9,8 @@ class InfractionListWidget extends StatelessWidget {
   final List<Infraction> infractions;
   final InfractionController? controller;
 
-  const InfractionListWidget({super.key, required this.infractions, this.controller});
+  const InfractionListWidget(
+      {super.key, required this.infractions, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -64,14 +65,16 @@ class InfractionListWidget extends StatelessWidget {
           DataCell(Text(infraction.categorie_id.toString())),
           DataCell(Text(infraction.latitude.toString())),
           DataCell(Text(infraction.longitude.toString())),
-          DataCell(Visibility(visible: false, child: Text(infraction.id.toString()))),
+          DataCell(Visibility(
+              visible: false, child: Text(infraction.id.toString()))),
         ],
         onLongPress: () => _handleLongPress(context, infraction, index),
       );
     }).toList();
   }
 
-  void _handleLongPress(BuildContext context, Infraction infraction, int index) {
+  void _handleLongPress(
+      BuildContext context, Infraction infraction, int index) {
     if (controller != null) {
       showDialog(
         context: context,
@@ -84,5 +87,3 @@ class InfractionListWidget extends StatelessWidget {
     }
   }
 }
-
-

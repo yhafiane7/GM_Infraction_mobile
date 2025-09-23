@@ -106,7 +106,9 @@ class _DecisionFormWidgetState extends State<DecisionFormWidget> {
       height: screenSize.height * 0.1,
       child: TextFormField(
         keyboardType: TextInputType.number,
-        inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly
+        ],
         decoration: UiService.buildInputDecoration(
             "Entrer le Numero d'Infraction", Icons.person, Colors.blue),
         validator: (value) {
@@ -186,8 +188,7 @@ class _DecisionFormWidgetState extends State<DecisionFormWidget> {
       setState(() => _isSubmitting = true);
       widget.controller!.createDecision(decision).then((result) {
         setState(() => _isSubmitting = false);
-        SnackbarService.showMessage(result,
-            isError: result.contains('Error'));
+        SnackbarService.showMessage(result, isError: result.contains('Error'));
         if (!result.contains('Error')) {
           _formKey.currentState?.reset();
           _dateInput.clear();
@@ -201,5 +202,3 @@ class _DecisionFormWidgetState extends State<DecisionFormWidget> {
     }
   }
 }
-
-
