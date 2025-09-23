@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 // import 'package:GM_INFRACTION/agent.dart';
-import 'package:GM_INFRACTION/features/agent/agent.dart' as agent_v2;
-import 'package:GM_INFRACTION/features/categorie/categorie.dart'
-    as categorie_v2;
-import 'package:GM_INFRACTION/features/commune/commune.dart' as commune_v2;
+import 'package:GM_INFRACTION/features/agent/agent.dart' as agent;
+import 'package:GM_INFRACTION/features/categorie/categorie.dart' as categorie;
+import 'package:GM_INFRACTION/features/commune/commune.dart' as commune;
 // import 'package:GM_INFRACTION/decision.dart';
-import 'package:GM_INFRACTION/features/decision/decision.dart' as decision_v2;
+import 'package:GM_INFRACTION/features/decision/decision.dart' as decision;
 // import 'package:GM_INFRACTION/infraction.dart';
 import 'package:GM_INFRACTION/features/infraction/infraction.dart'
-    as infraction_v2;
+    as infraction;
 // import 'package:GM_INFRACTION/violant.dart';
-import 'package:GM_INFRACTION/features/violant/violant.dart' as violant_v2;
+import 'package:GM_INFRACTION/features/violant/violant.dart' as violant;
 import 'package:GM_INFRACTION/models/categorie_model.dart';
 import 'package:GM_INFRACTION/models/commune_model.dart';
 import 'package:GM_INFRACTION/models/decision_model.dart';
@@ -84,29 +83,29 @@ FutureBuilder<List<dynamic>> buildtheList(String title) {
         } else if (snapshot.hasData) {
           switch (title) {
             case 'Agent':
-              return agent_v2.AgentListWidget(
+              return agent.AgentListWidget(
                   agents: snapshot.data! as List<Agent>,
-                  controller: agent_v2.AgentController());
+                  controller: agent.AgentController());
             case 'Violant':
-              return violant_v2.ViolantListWidget(
+              return violant.ViolantListWidget(
                   violants: snapshot.data! as List<Violant>,
-                  controller: violant_v2.ViolantController());
+                  controller: violant.ViolantController());
             case 'Categorie':
-              return categorie_v2.CategorieListWidget(
+              return categorie.CategorieListWidget(
                   categories: snapshot.data! as List<Categorie>,
-                  controller: categorie_v2.CategorieController());
+                  controller: categorie.CategorieController());
             case 'Commune':
-              return commune_v2.CommuneListWidget(
+              return commune.CommuneListWidget(
                   communes: snapshot.data! as List<Commune>,
-                  controller: commune_v2.CommuneController());
+                  controller: commune.CommuneController());
             case 'Decision':
-              return decision_v2.DecisionListWidget(
+              return decision.DecisionListWidget(
                   decisions: snapshot.data! as List<Decision>,
-                  controller: decision_v2.DecisionController());
+                  controller: decision.DecisionController());
             case 'Infraction':
-              return infraction_v2.InfractionListWidget(
+              return infraction.InfractionListWidget(
                   infractions: snapshot.data! as List<Infraction>,
-                  controller: infraction_v2.InfractionController());
+                  controller: infraction.InfractionController());
             default:
               return const Center(
                 child: Text('Unkown title'),
@@ -128,8 +127,6 @@ Future<List<dynamic>> buildList(String title) async {
     case 'violant':
       return await UiService.buildViolantList();
     case 'categorie':
-      return await UiService.buildCategorieList();
-    case 'categorie v2':
       return await UiService.buildCategorieList();
     case 'commune':
       return await UiService.buildCommuneList();
