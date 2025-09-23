@@ -257,11 +257,11 @@ class UiService {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Colors.red),
+        borderSide: const BorderSide(color: Colors.red),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Colors.red, width: 2),
+        borderSide: const BorderSide(color: Colors.red, width: 2),
       ),
     );
   }

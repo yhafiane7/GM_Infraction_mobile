@@ -27,7 +27,7 @@ class WebWrapper extends StatelessWidget {
               ],
             ),
             clipBehavior: Clip.hardEdge,
-            child: MyApp(), // <-- Your existing app goes here
+            child: const MyApp(), // <-- Your existing app goes here
           ),
         ),
       ),

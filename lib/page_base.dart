@@ -25,10 +25,10 @@ class BasePage extends StatefulWidget {
   const BasePage({Key? key, required this.title}) : super(key: key);
 
   @override
-  _PageState createState() => _PageState();
+  PageState createState() => PageState();
 }
 
-class _PageState extends State<BasePage> {
+class PageState extends State<BasePage> {
   List<dynamic> data = [];
 
   Future<void> refreshData() async {
@@ -76,7 +76,7 @@ FutureBuilder<List<dynamic>> buildtheList(String title) {
       future: buildList(title), // call BuildList method
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          print(snapshot);
+          debugPrint('$snapshot');
           return const Center(
             child: Text('Erreur'),
           );

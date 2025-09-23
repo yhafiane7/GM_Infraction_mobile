@@ -6,10 +6,11 @@ import 'package:GM_INFRACTION/services/snackbar_service.dart';
 import 'package:flutter/foundation.dart';
 
 void main() {
-  runApp(kIsWeb ? const WebWrapper() : MyApp());
+  runApp(kIsWeb ? const WebWrapper() : const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

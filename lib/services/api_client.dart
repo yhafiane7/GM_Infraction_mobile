@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer' as dev;
 import 'package:http/http.dart' as http;
 import '../config/app_config.dart';
 
@@ -72,8 +73,8 @@ class ApiClient {
     final url = '$baseUrl/$endpoint';
     final body = jsonEncode(object);
 
-    print('POST Request to: $url');
-    print('Request body: $body');
+    dev.log('POST Request to: $url', name: 'ApiClient');
+    dev.log('Request body: $body', name: 'ApiClient');
 
     final response = await client.post(
       Uri.parse(url),
@@ -81,8 +82,8 @@ class ApiClient {
       body: body,
     );
 
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    dev.log('Response status: ${response.statusCode}', name: 'ApiClient');
+    dev.log('Response body: ${response.body}', name: 'ApiClient');
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       // Parse the response to get the message
