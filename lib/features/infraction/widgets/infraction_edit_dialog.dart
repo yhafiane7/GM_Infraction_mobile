@@ -78,7 +78,11 @@ class _InfractionEditDialogState extends State<InfractionEditDialog> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              _buildForm(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: _buildForm(),
+                ),
+              ),
               const SizedBox(height: 20),
               _buildButtons(context),
             ],
