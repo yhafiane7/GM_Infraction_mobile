@@ -17,6 +17,17 @@ class Home extends StatelessWidget {
       text: 'CATEGORIE V2',
       iconData: Icons.category_outlined,
     ),
+    //violant
+    ButtonOption(
+        route: "/violant",
+        text: 'VIOLANT',
+        isVisible: true,
+        iconData: Icons.home),
+    ButtonOption(
+        route: "/violant-v2",
+        text: 'VIOLANT V2',
+        isVisible: true,
+        iconData: Icons.home),
     ButtonOption(
         route: "/commune",
         text: 'COMMUNE',

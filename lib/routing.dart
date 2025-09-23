@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:GM_INFRACTION/decision.dart';
+// import 'package:GM_INFRACTION/decision.dart';
 import 'package:GM_INFRACTION/home.dart';
 import 'package:GM_INFRACTION/models/agent_model.dart';
 import 'package:GM_INFRACTION/models/categorie_model.dart';
@@ -9,33 +9,45 @@ import 'package:GM_INFRACTION/models/violant_model.dart';
 import 'package:GM_INFRACTION/page_base.dart';
 import 'package:GM_INFRACTION/services/ui_service.dart';
 
-import 'agent.dart';
+// import 'agent.dart';
+import 'features/agent/agent.dart' as agent_v2;
 // Removed old categorie.dart implementation
 import 'features/commune/commune.dart' as commune_v2;
-import 'infraction.dart';
-import 'violant.dart';
+// import 'infraction.dart';
+// import 'violant.dart';
 import 'features/categorie/categorie.dart' as categorie_v2;
+import 'features/violant/violant.dart' as violant_v2;
+import 'features/infraction/infraction.dart' as infraction_v2;
+import 'features/decision/decision.dart' as decision_v2;
 
 class AppRouting {
   static Map<String, Widget Function(BuildContext)> main(BuildContext context) {
     return {
       '/': (context) => const Home(),
-      AgentList.Route: (context) => const BasePage(title: 'Agent'),
-      ViolantList.Route: (context) => const BasePage(title: 'Violant'),
+      agent_v2.AgentListWidget.route: (context) =>
+          const BasePage(title: 'Agent'),
+      violant_v2.ViolantListWidget.route: (context) =>
+          const BasePage(title: 'Violant'),
       categorie_v2.CategorieListWidget.route: (context) =>
           const BasePage(title: 'Categorie'),
       commune_v2.CommuneListWidget.route: (context) =>
           const BasePage(title: 'Commune'),
-      DecisionList.Route: (context) => const BasePage(title: 'Decision'),
-      InfractionList.Route: (context) => const BasePage(title: 'Infraction'),
-      AgentView.Route: (context) => const AgentView(),
+      decision_v2.DecisionListWidget.route: (context) =>
+          const BasePage(title: 'Decision'),
+      infraction_v2.InfractionListWidget.route: (context) =>
+          const BasePage(title: 'Infraction'),
+      agent_v2.AgentViewWidget.route: (context) =>
+          const agent_v2.AgentViewWidget(),
       commune_v2.CommuneViewWidget.route: (context) =>
           const commune_v2.CommuneViewWidget(),
-      ViolantView.Route: (context) => const ViolantView(),
+      violant_v2.ViolantViewWidget.route: (context) =>
+          const violant_v2.ViolantViewWidget(),
       categorie_v2.CategorieViewWidget.route: (context) =>
           const categorie_v2.CategorieViewWidget(),
-      DecisionView.Route: (context) => const DecisionView(),
-      InfractionView.Route: (context) => FutureBuilder<List<dynamic>>(
+      decision_v2.DecisionViewWidget.route: (context) =>
+          const decision_v2.DecisionViewWidget(),
+      infraction_v2.InfractionViewWidget.route: (context) =>
+          FutureBuilder<List<dynamic>>(
             future: Future.wait([
               UiService.buildCommuneList(),
               UiService.buildViolantList(),
@@ -56,11 +68,11 @@ class AppRouting {
                     as List<Agent>; // Extract agents from snapshot data
                 final List<Categorie> categories = snapshot.data![3]
                     as List<Categorie>; // Extract categories from snapshot data
-                return InfractionView(
-                    Communes: communes,
-                    Violants: violants,
-                    Agents: agents,
-                    Categories: categories);
+                return infraction_v2.InfractionViewWidget(
+                    communes: communes,
+                    violants: violants,
+                    agents: agents,
+                    categories: categories);
               } else {
                 return const Center(
                   child: CircularProgressIndicator(),
