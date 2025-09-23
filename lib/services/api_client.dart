@@ -163,9 +163,7 @@ class ApiClient {
         final jsonResponse = json.decode(response.body);
 
         // Handle different error response formats based on API documentation
-        if (jsonResponse['message'] != null) {
-          return jsonResponse['message'].toString();
-        } else if (jsonResponse['errors'] != null) {
+        if (jsonResponse['errors'] != null) {
           final errors = jsonResponse['errors'];
           if (errors is String) {
             return errors;
@@ -183,6 +181,8 @@ class ApiClient {
           } else {
             return errors.toString();
           }
+        } else if (jsonResponse['message'] != null) {
+          return jsonResponse['message'].toString();
         } else {
           return 'Request failed with status: ${response.statusCode}';
         }
