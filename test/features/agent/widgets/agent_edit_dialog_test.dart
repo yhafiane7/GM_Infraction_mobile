@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:GM_INFRACTION/features/agent/agent.dart';
 import 'package:GM_INFRACTION/models/agent_model.dart';
-import 'package:GM_INFRACTION/features/agent/controllers/agent_controller.dart';
+// Removed unnecessary direct controller import; available via agent.dart barrel
 
 class _RecordingAgentController extends AgentController {
   int? lastIndex;

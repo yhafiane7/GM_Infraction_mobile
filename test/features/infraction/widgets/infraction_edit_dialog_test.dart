@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:GM_INFRACTION/features/infraction/infraction.dart';
 import 'package:GM_INFRACTION/models/infraction_model.dart';
-import 'package:GM_INFRACTION/features/infraction/controllers/infraction_controller.dart';
+// Removed unnecessary direct controller import; available via infraction.dart barrel
 
 class _RecordingInfractionController extends InfractionController {
   int? lastIndex;

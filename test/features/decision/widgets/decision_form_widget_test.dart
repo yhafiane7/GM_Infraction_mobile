@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:GM_INFRACTION/features/decision/decision.dart';
-import 'package:GM_INFRACTION/features/decision/controllers/decision_controller.dart';
+// Removed unnecessary direct controller import; available via decision.dart barrel
 import '../../../test_helpers/date_picker_helper.dart';
 
 void main() {

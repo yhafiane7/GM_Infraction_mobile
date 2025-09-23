@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:GM_INFRACTION/features/commune/commune.dart';
-import 'package:GM_INFRACTION/features/commune/controllers/commune_controller.dart';
+// Removed unnecessary direct controller import; available via commune.dart barrel
 
 void main() {
   group('CommuneFormWidget', () {

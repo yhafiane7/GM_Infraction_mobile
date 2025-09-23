@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:GM_INFRACTION/features/commune/commune.dart';
 import 'package:GM_INFRACTION/features/commune/widgets/commune_edit_dialog.dart';
 import 'package:GM_INFRACTION/models/commune_model.dart';
-import 'package:GM_INFRACTION/features/commune/controllers/commune_controller.dart';
+// Removed unnecessary direct controller import; available via commune.dart barrel
 
 class _RecordingCommuneController extends CommuneController {
   int? lastIndex;

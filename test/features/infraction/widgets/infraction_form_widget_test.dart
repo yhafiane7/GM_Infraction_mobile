@@ -5,7 +5,7 @@ import 'package:GM_INFRACTION/models/agent_model.dart';
 import 'package:GM_INFRACTION/models/categorie_model.dart';
 import 'package:GM_INFRACTION/models/commune_model.dart';
 import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'package:GM_INFRACTION/features/infraction/controllers/infraction_controller.dart';
+// Removed unnecessary direct controller import; available via infraction.dart barrel
 import '../../../test_helpers/date_picker_helper.dart';
 
 void main() {
