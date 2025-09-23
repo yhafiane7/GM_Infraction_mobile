@@ -39,10 +39,37 @@ void main() {
       await tester.pumpWidget(MyApp());
       await tester.pumpAndSettle();
 
-      // Check for visible buttons (some might be filtered out)
+      // Ensure specific tiles are visible before asserting
+      await tester.dragUntilVisible(
+        find.text('AGENT'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('AGENT'), findsOneWidget);
+
+      await tester.dragUntilVisible(
+        find.text('CATEGORIE'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('CATEGORIE'), findsOneWidget);
+
+      await tester.dragUntilVisible(
+        find.text('COMMUNE'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('COMMUNE'), findsOneWidget);
+
+      await tester.dragUntilVisible(
+        find.text('DECISION'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('DECISION'), findsOneWidget);
       expect(find.text('INFRACTION'), findsAtLeastNWidgets(0));
     });
@@ -76,6 +103,9 @@ void main() {
       await tester.pumpWidget(MyApp());
       await tester.pumpAndSettle();
 
+      // Scroll to ensure the tile is hittable
+      await tester.ensureVisible(find.text('COMMUNE'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('COMMUNE'));
       await tester.pumpAndSettle();
 
@@ -88,6 +118,13 @@ void main() {
       await tester.pumpWidget(MyApp());
       await tester.pumpAndSettle();
 
+      // Scroll to ensure the tile is hittable
+      await tester.dragUntilVisible(
+        find.text('DECISION'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       await tester.tap(find.text('DECISION'));
       await tester.pumpAndSettle();
 
@@ -100,9 +137,11 @@ void main() {
       await tester.pumpWidget(MyApp());
       await tester.pumpAndSettle();
 
-      // Check if INFRACTION button is visible before trying to tap
-      if (find.text('INFRACTION').evaluate().isNotEmpty) {
-        await tester.tap(find.text('INFRACTION'));
+      final finder = find.text('INFRACTION');
+      if (finder.evaluate().isNotEmpty) {
+        await tester.ensureVisible(finder);
+        await tester.pumpAndSettle();
+        await tester.tap(finder);
         await tester.pumpAndSettle();
 
         // Should navigate to infraction page

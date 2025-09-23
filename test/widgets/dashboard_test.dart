@@ -22,13 +22,40 @@ void main() {
           home: Home(),
         ),
       );
+      await tester.pumpAndSettle();
 
-      // Check for all button texts (only visible ones)
+      // Ensure each tile is made visible before asserting
+      await tester.dragUntilVisible(
+        find.text('AGENT'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('AGENT'), findsOneWidget);
+
+      await tester.dragUntilVisible(
+        find.text('CATEGORIE'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('CATEGORIE'), findsOneWidget);
+
+      await tester.dragUntilVisible(
+        find.text('COMMUNE'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('COMMUNE'), findsOneWidget);
+
+      await tester.dragUntilVisible(
+        find.text('DECISION'),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('DECISION'), findsOneWidget);
-      // INFRACTION might not be visible or might be filtered out
     });
 
     testWidgets('should display correct icons for each option',
@@ -38,14 +65,34 @@ void main() {
           home: Home(),
         ),
       );
+      await tester.pumpAndSettle();
 
-      // Check for icons (there might be multiple home icons)
+      // Make sure icons are visible before asserting
+      await tester.dragUntilVisible(
+        find.byIcon(Icons.person),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.byIcon(Icons.person), findsOneWidget); // AGENT
+
+      await tester.dragUntilVisible(
+        find.byIcon(Icons.category),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.byIcon(Icons.category), findsOneWidget); // CATEGORIE
+
+      await tester.dragUntilVisible(
+        find.byIcon(Icons.pages),
+        find.byType(Scrollable),
+        const Offset(0, -300),
+      );
+      await tester.pumpAndSettle();
       expect(find.byIcon(Icons.pages), findsOneWidget); // DECISION
-      // There might be multiple home icons, so just check that they exist
-      expect(
-          find.byIcon(Icons.home), findsWidgets); // COMMUNE and possibly others
+
+      expect(find.byIcon(Icons.home), findsWidgets); // COMMUNE and VIOLANT
     });
 
     testWidgets('should have correct number of menu buttons',
@@ -66,9 +113,10 @@ void main() {
           home: Home(),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(Scaffold), findsOneWidget);
-      expect(find.byType(Column), findsWidgets);
+      expect(find.byType(GridView), findsOneWidget);
     });
 
     testWidgets('should have tappable buttons', (WidgetTester tester) async {
@@ -89,11 +137,12 @@ void main() {
           home: Home(),
         ),
       );
+      await tester.pumpAndSettle();
 
       // Check for main layout components
       expect(find.byType(Scaffold), findsOneWidget);
       expect(find.byType(AppBar), findsOneWidget);
-      expect(find.byType(Column), findsWidgets);
+      expect(find.byType(GridView), findsOneWidget);
       expect(find.byType(Card), findsAtLeastNWidgets(4));
     });
   });

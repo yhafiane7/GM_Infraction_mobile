@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-// import 'package:GM_INFRACTION/decision.dart';
 import 'package:GM_INFRACTION/home.dart';
 import 'package:GM_INFRACTION/models/agent_model.dart';
 import 'package:GM_INFRACTION/models/categorie_model.dart';
@@ -9,12 +8,8 @@ import 'package:GM_INFRACTION/models/violant_model.dart';
 import 'package:GM_INFRACTION/page_base.dart';
 import 'package:GM_INFRACTION/services/ui_service.dart';
 
-// import 'agent.dart';
 import 'features/agent/agent.dart' as agent;
-// Removed old categorie.dart implementation
 import 'features/commune/commune.dart' as commune;
-// import 'infraction.dart';
-// import 'violant.dart';
 import 'features/categorie/categorie.dart' as categorie;
 import 'features/violant/violant.dart' as violant;
 import 'features/infraction/infraction.dart' as infraction;
@@ -92,17 +87,4 @@ MapEntry<String, Builder<Widget>> createRouteWithName<T extends Widget>(
     Builder<T> builder) {
   return MapEntry(routeName<T>(), (context) => builder(context));
 }
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      // initialRoute: routeName<ScreenPicker>(),
-      routes: Map.fromEntries([
-        // createRouteWithName((context) => ScreenPicker()),
-        // createRouteWithName((context) => ScreenOne()),
-        // createRouteWithName((context) => ScreenTwo()),
-      ]),
-    );
-  }
-}
+// Note: app entrypoint is defined in main.dart; demo MyApp removed.

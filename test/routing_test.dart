@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:GM_INFRACTION/routing.dart' as routing;
+import 'package:GM_INFRACTION/main.dart' as app;
 import 'package:GM_INFRACTION/home.dart';
 import 'package:GM_INFRACTION/page_base.dart';
 
@@ -225,21 +226,21 @@ void main() {
       expect(entry.value, isA<Function>());
     });
 
-    testWidgets('routing.MyApp should build MaterialApp',
+    testWidgets('Main MyApp should build MaterialApp',
         (WidgetTester tester) async {
-      await tester.pumpWidget(routing.MyApp());
+      await tester.pumpWidget(app.MyApp());
 
       expect(find.byType(MaterialApp), findsOneWidget);
     });
 
-    testWidgets('routing.MyApp should have empty routes',
+    testWidgets('Main MyApp should have non-empty routes',
         (WidgetTester tester) async {
-      await tester.pumpWidget(routing.MyApp());
+      await tester.pumpWidget(app.MyApp());
 
       final materialApp = tester.widget<MaterialApp>(find.byType(MaterialApp));
       expect(materialApp.routes,
           isA<Map<String, Widget Function(BuildContext)>>());
-      expect(materialApp.routes!.isEmpty, isTrue);
+      expect(materialApp.routes!.isNotEmpty, isTrue);
     });
   });
 }

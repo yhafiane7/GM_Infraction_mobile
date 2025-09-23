@@ -20,17 +20,31 @@ test/
 │   ├── infraction_model_test.dart
 │   └── violant_model_test.dart
 ├── services/               # Service layer tests
-│   ├── agent_api_test.dart
-│   ├── api_client_comprehensive_test.dart
+│   ├── api_client/
+│   │   ├── get_data_test.dart
+│   │   ├── post_data_test.dart
+│   │   ├── delete_data_test.dart
+│   │   └── update_data_test.dart
+│   ├── data_repository/
+│   │   ├── agent_repository_test.dart
+│   │   ├── categorie_repository_test.dart
+│   │   ├── commune_repository_test.dart
+│   │   ├── decision_repository_test.dart
+│   │   ├── error_handling_test.dart
+│   │   └── violant_repository_test.dart
 │   ├── data_repository_test.dart
-│   ├── service_base_test.dart
-│   └── ui_service_test.dart
+│   └── ui_service/
+│       ├── ui_service_agent_test.dart
+│       ├── ui_service_commune_test.dart
+│       ├── ui_service_categorie_test.dart
+│       ├── ui_service_infraction_test.dart
+│       ├── ui_service_violant_test.dart
+│       ├── ui_service_decision_test.dart
+│       └── ui_service_decorations_test.dart
 ├── test_helpers/           # Test utilities and helpers
-│   ├── entity_validator.dart
 │   ├── mock_responses.dart
-│   ├── test_base.dart
-│   ├── test_data_generator.dart
-│   └── test_factory.dart
+│   ├── test_factory.dart
+│   └── toast_mock.dart
 ├── unit/                   # Additional unit tests
 │   └── page_base_test.dart
 ├── widgets/                # Widget tests for UI components

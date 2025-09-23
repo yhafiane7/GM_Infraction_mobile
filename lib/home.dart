@@ -5,7 +5,7 @@ import 'package:GM_INFRACTION/widgets/dashboard_view.dart';
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
-  static List<ButtonOption> Options = const <ButtonOption>[
+  static List<ButtonOption> options = const <ButtonOption>[
     ButtonOption(route: "/agent", text: 'AGENT', iconData: Icons.person),
     ButtonOption(
       route: "/categorie",
@@ -46,7 +46,7 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      body: DashboardView(options: Home.Options),
+      body: DashboardView(options: Home.options),
     );
   }
 }
