@@ -82,9 +82,6 @@ class ApiClient {
       body: body,
     );
 
-    dev.log('Response status: ${response.statusCode}', name: 'ApiClient');
-    dev.log('Response body: ${response.body}', name: 'ApiClient');
-
     if (response.statusCode == 200 || response.statusCode == 201) {
       // Parse the response to get the message
       try {
