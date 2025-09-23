@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^1.2.2
   fluttertoast: ^8.2.1
-  intl: ^0.20.2
+  intl: ^0.17.0
   collection: ^1.17.0
 
 dev_dependencies:
