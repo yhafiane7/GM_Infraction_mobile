@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter/material.dart';
 
 /// Opens a Material date picker by tapping on [dateFieldFinder]
 /// and confirms the selection (defaults to current displayed date)
