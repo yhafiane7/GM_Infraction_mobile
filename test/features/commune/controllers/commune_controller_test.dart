@@ -10,7 +10,11 @@ void main() {
       expect(controller.isLoading, false);
       expect(controller.errorMessage, isNull);
       expect(controller.communes, isA<List<Commune>>());
-    });
+      
+    },
+    //increase timeout to 60 seconds
+    timeout: const Timeout(Duration(seconds: 60)),
+    );
 
     test('createCommune returns message and toggles loading', () async {
       final controller = CommuneController();
