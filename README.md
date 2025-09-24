@@ -5,7 +5,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.16.0-blue.svg)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/Dart-2.19.6+-blue.svg)](https://dart.dev/)
 
-## 🖼️ Screens (select)
+## 🖼️ Screens
 
 <p float="left">
   <img src="screenshots/Screenshot_Home.png"  height="420px" />
@@ -106,15 +106,6 @@ Total test cases: **255+** across unit, widget, and integration suites. Coverage
    ```bash
    flutter run
    ```
-
----
-
-## 🖼️ Screens (select)
-
-<p float="left">
-  <img src="screenshots/Screenshot_Home.png"  height="420px" />
-  <img src="screenshots/Screenshot_Agent.png"  height="420px"/>
-</p>
 
 ---
 
