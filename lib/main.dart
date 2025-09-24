@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:gmsoft_pkg/config/global_params.dart'; 
-import 'package:GM_INFRACTION/routing.dart';
-void main() => runApp(MyApp());
+import 'package:gmsoft_infractions_mobile/config/app_theme.dart';
+import 'package:gmsoft_infractions_mobile/routing.dart';
+import 'package:gmsoft_infractions_mobile/services/snackbar_service.dart';
+
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    //final config = context.read(flavorConfigProvider);
     return MaterialApp(
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          backgroundColor: GlobalParams.GlobalColor,
-        ),
-        fontFamily: GlobalParams.MainfontFamily,
-      ),
-      // title: config.state.appTitle,
-      // theme: config.state.theme,
+      theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: AppRouting.main(context),
+      builder: (context, child) {
+        return ScaffoldMessenger(
+          key: SnackbarService.scaffoldMessengerKey,
+          child: child!,
+        );
+      },
     );
   }
 }

@@ -1,0 +1,5 @@
+tags:
+  integration:
+    timeout: 2x
+
+concurrency: 4

@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/Agent.dart';
-import 'package:GM_INFRACTION/Categorie.dart';
-import 'package:GM_INFRACTION/Commune.dart';
-import 'package:GM_INFRACTION/Decision.dart';
-import 'package:GM_INFRACTION/Infraction.dart';
-import 'package:GM_INFRACTION/Violant.dart';
-import 'package:GM_INFRACTION/models/categorie_model.dart';
-import 'package:GM_INFRACTION/models/commune_model.dart';
-import 'package:GM_INFRACTION/models/decision_model.dart';
-import 'package:GM_INFRACTION/models/infraction_model.dart';
-import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'package:GM_INFRACTION/services/service_base.dart';
-import 'package:http/http.dart' as http;
+// import 'package:gmsoft_infractions_mobile/agent.dart';
+import 'package:gmsoft_infractions_mobile/features/agent/agent.dart' as agent;
+import 'package:gmsoft_infractions_mobile/features/categorie/categorie.dart'
+    as categorie;
+import 'package:gmsoft_infractions_mobile/features/commune/commune.dart'
+    as commune;
+// import 'package:gmsoft_infractions_mobile/decision.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/decision.dart'
+    as decision;
+// import 'package:gmsoft_infractions_mobile/infraction.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/infraction.dart'
+    as infraction;
+// import 'package:gmsoft_infractions_mobile/violant.dart';
+import 'package:gmsoft_infractions_mobile/features/violant/violant.dart'
+    as violant;
+import 'package:gmsoft_infractions_mobile/models/categorie_model.dart';
+import 'package:gmsoft_infractions_mobile/models/commune_model.dart';
+import 'package:gmsoft_infractions_mobile/models/decision_model.dart';
+import 'package:gmsoft_infractions_mobile/models/infraction_model.dart';
+import 'package:gmsoft_infractions_mobile/models/violant_model.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
 
 import 'models/agent_model.dart';
 
@@ -21,10 +29,10 @@ class BasePage extends StatefulWidget {
   const BasePage({Key? key, required this.title}) : super(key: key);
 
   @override
-  _PageState createState() => _PageState();
+  PageState createState() => PageState();
 }
 
-class _PageState extends State<BasePage> {
+class PageState extends State<BasePage> {
   List<dynamic> data = [];
 
   Future<void> refreshData() async {
@@ -72,26 +80,36 @@ FutureBuilder<List<dynamic>> buildtheList(String title) {
       future: buildList(title), // call BuildList method
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          print(snapshot);
+          debugPrint('$snapshot');
           return const Center(
             child: Text('Erreur'),
           );
         } else if (snapshot.hasData) {
           switch (title) {
             case 'Agent':
-              return AgentList(Agents: snapshot.data! as List<Agent>);
+              return agent.AgentListWidget(
+                  agents: snapshot.data! as List<Agent>,
+                  controller: agent.AgentController());
             case 'Violant':
-              return ViolantList(Violants: snapshot.data! as List<Violant>);
+              return violant.ViolantListWidget(
+                  violants: snapshot.data! as List<Violant>,
+                  controller: violant.ViolantController());
             case 'Categorie':
-              return CategorieList(
-                  Categories: snapshot.data! as List<Categorie>);
+              return categorie.CategorieListWidget(
+                  categories: snapshot.data! as List<Categorie>,
+                  controller: categorie.CategorieController());
             case 'Commune':
-              return CommuneList(Communes: snapshot.data! as List<Commune>);
+              return commune.CommuneListWidget(
+                  communes: snapshot.data! as List<Commune>,
+                  controller: commune.CommuneController());
             case 'Decision':
-              return DecisionList(Decisions: snapshot.data! as List<Decision>);
+              return decision.DecisionListWidget(
+                  decisions: snapshot.data! as List<Decision>,
+                  controller: decision.DecisionController());
             case 'Infraction':
-              return InfractionList(
-                  Infractions: snapshot.data! as List<Infraction>);
+              return infraction.InfractionListWidget(
+                  infractions: snapshot.data! as List<Infraction>,
+                  controller: infraction.InfractionController());
             default:
               return const Center(
                 child: Text('Unkown title'),
@@ -106,32 +124,20 @@ FutureBuilder<List<dynamic>> buildtheList(String title) {
 }
 
 Future<List<dynamic>> buildList(String title) async {
-  title=title.toLowerCase();
+  title = title.toLowerCase();
   switch (title) {
     case 'agent':
-      final List<Agent> agents = await ServiceBase.fetchData<Agent>(
-          http.Client(), title, (json) => Agent.fromJson(json));
-      return agents;
+      return await UiService.buildAgentList();
     case 'violant':
-      final List<Violant> violants = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Violant.fromJson(json));
-      return violants;
+      return await UiService.buildViolantList();
     case 'categorie':
-      final List<Categorie> categories = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Categorie.fromJson(json));
-      return categories;
+      return await UiService.buildCategorieList();
     case 'commune':
-      final List<Commune> communes = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Commune.fromJson(json));
-      return communes;
+      return await UiService.buildCommuneList();
     case 'decision':
-      final List<Decision> decisions = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Decision.fromJson(json));
-      return decisions;
+      return await UiService.buildDecisionList();
     case 'infraction':
-      final List<Infraction> infractions = await ServiceBase.fetchData(
-          http.Client(), title, (json) => Infraction.fromJson(json));
-      return infractions;
+      return await UiService.buildInfractionList();
     default:
       throw Exception('Invalid TITLE : $title');
   }
