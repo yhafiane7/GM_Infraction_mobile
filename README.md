@@ -5,9 +5,18 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.16.0-blue.svg)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/Dart-2.19.6+-blue.svg)](https://dart.dev/)
 
+## 🖼️ Screens (select)
+
+<p float="left">
+  <img src="screenshots/Screenshot_Home.png"  height="420px" />
+  <img src="screenshots/Screenshot_Agent.png"  height="420px"/>
+</p>
+
 ## 🌍 Overview
 
 Feature‑modular Flutter client for municipal infractions management. Designed as part of a broader system: mobile data collection → Laravel REST API → relational database, with headroom for analytics pipelines and reporting.
+
+Linked API repository: [`gm-soft-municipal-infraction-api`](https://github.com/yhafiane7/gm-soft-municipal-infraction-api)
 
 ---
 
@@ -62,7 +71,7 @@ GitHub Actions pipeline for automated quality gates and build artifacts:
 - 🧱 Widget (`test/features/**/widgets/**`, `test/widgets/**`): views, dialogs, routing
 - 🔗 Integration (`test/integration/**`): end-to-end flows and API connectivity
 
-Total test cases: **255+** across unit, widget, and integration suites.
+Total test cases: **255+** across unit, widget, and integration suites. Coverage collected in CI and reflected by the Codecov badge above.
 
 ## 🧰 Tech stack
 
@@ -70,26 +79,6 @@ Total test cases: **255+** across unit, widget, and integration suites.
 - HTTP (`http`) for REST communication
 - State: `ChangeNotifier` + `ScaffoldMessenger` for UX messaging
 - Testing: unit, widget, integration suites + coverage
-
-### Local
-
-Run tests and analysis locally to mirror CI:
-`flutter pub get && flutter test --coverage && flutter analyze && dart format --output=none --set-exit-if-changed .`
-
-### Code Coverage
-
-The CI pipeline generates test coverage reports. To view coverage locally:
-
-```bash
-# Generate coverage report
-flutter test --coverage
-
-# View coverage (requires lcov)
-genhtml coverage/lcov.info -o coverage/html
-open coverage/html/index.html
-```
-
-**Note**: Codecov integration is optional. If you want to upload coverage reports to Codecov, add a `CODECOV_TOKEN` secret to your GitHub repository settings.
 
 ## ⚡ Setup & Run
 
