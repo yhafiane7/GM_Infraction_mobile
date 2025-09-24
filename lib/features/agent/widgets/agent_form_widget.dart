@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/agent_model.dart';
-import 'package:GM_INFRACTION/features/agent/controllers/agent_controller.dart';
-import 'package:GM_INFRACTION/services/ui_service.dart';
-import 'package:GM_INFRACTION/services/snackbar_service.dart';
+import 'package:gmsoft_infractions_mobile/models/agent_model.dart';
+import 'package:gmsoft_infractions_mobile/features/agent/controllers/agent_controller.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
+import 'package:gmsoft_infractions_mobile/services/snackbar_service.dart';
 
 class AgentFormWidget extends StatefulWidget {
   final AgentController? controller;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/decision_model.dart';
-import 'package:GM_INFRACTION/features/decision/controllers/decision_controller.dart';
-import 'package:GM_INFRACTION/features/decision/widgets/decision_details_dialog.dart';
+import 'package:gmsoft_infractions_mobile/models/decision_model.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/controllers/decision_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/widgets/decision_details_dialog.dart';
 
 class DecisionListWidget extends StatelessWidget {
   static const String route = "/decision";

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/services/api_client.dart';
-import 'package:GM_INFRACTION/models/agent_model.dart';
+import 'package:gmsoft_infractions_mobile/services/api_client.dart';
+import 'package:gmsoft_infractions_mobile/models/agent_model.dart';
 import 'test_client.dart';
 import 'package:http/http.dart' as http;
 

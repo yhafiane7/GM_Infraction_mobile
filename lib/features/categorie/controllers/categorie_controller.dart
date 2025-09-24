@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/categorie_model.dart';
-import 'package:GM_INFRACTION/services/ui_service.dart';
-import 'package:GM_INFRACTION/services/data_repository.dart';
+import 'package:gmsoft_infractions_mobile/models/categorie_model.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
+import 'package:gmsoft_infractions_mobile/services/data_repository.dart';
 
 /// Controller for managing Categorie business logic and state
 class CategorieController extends ChangeNotifier {

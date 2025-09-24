@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:GM_INFRACTION/models/decision_model.dart';
-import 'package:GM_INFRACTION/features/decision/controllers/decision_controller.dart';
-import 'package:GM_INFRACTION/services/ui_service.dart';
-import 'package:GM_INFRACTION/services/snackbar_service.dart';
+import 'package:gmsoft_infractions_mobile/models/decision_model.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/controllers/decision_controller.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
+import 'package:gmsoft_infractions_mobile/services/snackbar_service.dart';
 
 class DecisionFormWidget extends StatefulWidget {
   final DecisionController? controller;

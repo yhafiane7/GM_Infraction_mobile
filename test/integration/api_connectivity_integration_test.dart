@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:GM_INFRACTION/config/app_config.dart';
+import 'package:gmsoft_infractions_mobile/config/app_config.dart';
 
 void main() {
   group('API connectivity (integration)', () {

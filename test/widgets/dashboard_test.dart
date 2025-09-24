@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/home.dart';
+import 'package:gmsoft_infractions_mobile/home.dart';
 
 void main() {
   group('Home Widget Tests', () {

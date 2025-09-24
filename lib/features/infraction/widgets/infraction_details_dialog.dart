@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/infraction_model.dart';
-import 'package:GM_INFRACTION/features/infraction/controllers/infraction_controller.dart';
-import 'package:GM_INFRACTION/services/snackbar_service.dart';
-import 'package:GM_INFRACTION/features/infraction/widgets/infraction_edit_dialog.dart';
+import 'package:gmsoft_infractions_mobile/models/infraction_model.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/controllers/infraction_controller.dart';
+import 'package:gmsoft_infractions_mobile/services/snackbar_service.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/widgets/infraction_edit_dialog.dart';
 
 class InfractionDetailsDialog extends StatelessWidget {
   final Infraction infraction;

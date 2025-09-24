@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/features/commune/controllers/commune_controller.dart';
-import 'package:GM_INFRACTION/models/commune_model.dart';
+import 'package:gmsoft_infractions_mobile/features/commune/controllers/commune_controller.dart';
+import 'package:gmsoft_infractions_mobile/models/commune_model.dart';
 
 void main() {
   group('CommuneController', () {

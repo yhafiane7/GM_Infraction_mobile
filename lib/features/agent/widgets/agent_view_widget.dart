@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/features/agent/controllers/agent_controller.dart';
-import 'package:GM_INFRACTION/features/agent/widgets/agent_form_widget.dart';
+import 'package:gmsoft_infractions_mobile/features/agent/controllers/agent_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/agent/widgets/agent_form_widget.dart';
 
 class AgentViewWidget extends StatelessWidget {
   static const String route = "/agent/create";

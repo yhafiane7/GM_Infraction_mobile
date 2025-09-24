@@ -1,4 +1,4 @@
-# GM_INFRACTION Flutter Application
+# gmsoft_infractions_mobile Flutter Application
 
 [![Development CI](https://github.com/yhafiane7/GM_Infraction_mobile/actions/workflows/ci.yml/badge.svg)](https://github.com/yhafiane7/GM_Infraction_mobile/actions/workflows/ci.yml)
 [![Flutter](https://img.shields.io/badge/Flutter-3.16.0-blue.svg)](https://flutter.dev/)
@@ -6,7 +6,7 @@
 
 ## Overview
 
-GM_INFRACTION is a Flutter mobile application designed to help Moroccan communes manage infractions reported by agents. The system tracks infractions with detailed information including the violator, location, category, and subsequent decisions. The app supports full CRUD (Create, Read, Update, Delete) operations on the key entities such as Agents, Violants (violators), Communes, Categories, Decisions, and Infractions.
+gmsoft_infractions_mobile is a Flutter mobile application designed to help Moroccan communes manage infractions reported by agents. The system tracks infractions with detailed information including the violator, location, category, and subsequent decisions. The app supports full CRUD (Create, Read, Update, Delete) operations on the key entities such as Agents, Violants (violators), Communes, Categories, Decisions, and Infractions.
 
 This app communicates with a Laravel backend API that handles data storage and business logic.
 

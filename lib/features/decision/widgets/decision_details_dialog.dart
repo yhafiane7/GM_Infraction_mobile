@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/decision_model.dart';
-import 'package:GM_INFRACTION/features/decision/controllers/decision_controller.dart';
-import 'package:GM_INFRACTION/services/snackbar_service.dart';
-import 'package:GM_INFRACTION/features/decision/widgets/decision_edit_dialog.dart';
+import 'package:gmsoft_infractions_mobile/models/decision_model.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/controllers/decision_controller.dart';
+import 'package:gmsoft_infractions_mobile/services/snackbar_service.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/widgets/decision_edit_dialog.dart';
 
 class DecisionDetailsDialog extends StatelessWidget {
   final Decision decision;

@@ -1,8 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/features/agent/controllers/agent_controller.dart';
-import 'package:GM_INFRACTION/models/agent_model.dart';
-import 'package:GM_INFRACTION/services/data_repository.dart' as repo;
-import 'package:GM_INFRACTION/services/ui_service.dart' as ui;
+import 'package:gmsoft_infractions_mobile/features/agent/controllers/agent_controller.dart';
+import 'package:gmsoft_infractions_mobile/models/agent_model.dart';
+import 'package:gmsoft_infractions_mobile/services/data_repository.dart'
+    as repo;
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart' as ui;
 import 'package:mockito/mockito.dart';
 
 class _RepoMock extends Mock implements repo.DataRepository {}

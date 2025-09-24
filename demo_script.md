@@ -1,4 +1,4 @@
-# 🚀 GM_INFRACTION Demo Script
+# 🚀 gmsoft_infractions_mobile Demo Script
 
 ## Live API Connection Test
 

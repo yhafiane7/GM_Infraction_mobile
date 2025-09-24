@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/features/infraction/controllers/infraction_controller.dart';
-import 'package:GM_INFRACTION/models/infraction_model.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/controllers/infraction_controller.dart';
+import 'package:gmsoft_infractions_mobile/models/infraction_model.dart';
 
 void main() {
   group('InfractionController', () {

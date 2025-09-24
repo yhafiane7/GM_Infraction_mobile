@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:GM_INFRACTION/models/commune_model.dart';
-import 'package:GM_INFRACTION/features/commune/controllers/commune_controller.dart';
-import 'package:GM_INFRACTION/services/ui_service.dart';
-import 'package:GM_INFRACTION/services/snackbar_service.dart';
+import 'package:gmsoft_infractions_mobile/models/commune_model.dart';
+import 'package:gmsoft_infractions_mobile/features/commune/controllers/commune_controller.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
+import 'package:gmsoft_infractions_mobile/services/snackbar_service.dart';
 
 class CommuneFormWidget extends StatefulWidget {
   final CommuneController? controller;

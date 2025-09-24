@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/features/categorie/controllers/categorie_controller.dart';
-import 'package:GM_INFRACTION/models/categorie_model.dart';
+import 'package:gmsoft_infractions_mobile/features/categorie/controllers/categorie_controller.dart';
+import 'package:gmsoft_infractions_mobile/models/categorie_model.dart';
 
 void main() {
   group('CategorieController', () {

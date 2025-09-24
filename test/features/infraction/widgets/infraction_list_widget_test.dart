@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/features/infraction/infraction.dart';
-import 'package:GM_INFRACTION/models/infraction_model.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/infraction.dart';
+import 'package:gmsoft_infractions_mobile/models/infraction_model.dart';
 // Removed unnecessary direct controller import; available via infraction.dart barrel
 
 void main() {

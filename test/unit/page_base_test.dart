@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/page_base.dart';
+import 'package:gmsoft_infractions_mobile/page_base.dart';
 
 void main() {
   group('Page Base Tests', () {

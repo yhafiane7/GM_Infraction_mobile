@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/categorie_model.dart';
-import 'package:GM_INFRACTION/features/categorie/controllers/categorie_controller.dart';
-import 'package:GM_INFRACTION/features/categorie/widgets/categorie_details_dialog.dart';
+import 'package:gmsoft_infractions_mobile/models/categorie_model.dart';
+import 'package:gmsoft_infractions_mobile/features/categorie/controllers/categorie_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/categorie/widgets/categorie_details_dialog.dart';
 
 /// Widget for displaying a list of categories in a DataTable
 class CategorieListWidget extends StatelessWidget {

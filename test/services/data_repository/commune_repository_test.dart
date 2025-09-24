@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/services/api_client.dart';
-import 'package:GM_INFRACTION/models/commune_model.dart';
+import 'package:gmsoft_infractions_mobile/services/api_client.dart';
+import 'package:gmsoft_infractions_mobile/models/commune_model.dart';
 import '../../test_helpers/test_factory.dart';
 import '../../test_helpers/mock_responses.dart';
 import '../api_client/test_client.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'package:GM_INFRACTION/features/violant/controllers/violant_controller.dart';
-import 'package:GM_INFRACTION/features/violant/widgets/violant_details_dialog.dart';
+import 'package:gmsoft_infractions_mobile/models/violant_model.dart';
+import 'package:gmsoft_infractions_mobile/features/violant/controllers/violant_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/violant/widgets/violant_details_dialog.dart';
 
 class ViolantListWidget extends StatelessWidget {
   static const String route = "/violant";

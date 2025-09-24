@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/infraction_model.dart';
-import 'package:GM_INFRACTION/services/ui_service.dart';
-import 'package:GM_INFRACTION/services/data_repository.dart';
+import 'package:gmsoft_infractions_mobile/models/infraction_model.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
+import 'package:gmsoft_infractions_mobile/services/data_repository.dart';
 
 class InfractionController extends ChangeNotifier {
   bool _isLoading = false;

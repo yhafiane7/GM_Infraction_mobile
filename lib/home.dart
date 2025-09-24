@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/button_option.dart';
-import 'package:GM_INFRACTION/widgets/dashboard_view.dart';
+import 'package:gmsoft_infractions_mobile/models/button_option.dart';
+import 'package:gmsoft_infractions_mobile/widgets/dashboard_view.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

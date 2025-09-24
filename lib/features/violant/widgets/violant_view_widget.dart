@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/features/violant/controllers/violant_controller.dart';
-import 'package:GM_INFRACTION/features/violant/widgets/violant_form_widget.dart';
+import 'package:gmsoft_infractions_mobile/features/violant/controllers/violant_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/violant/widgets/violant_form_widget.dart';
 
 class ViolantViewWidget extends StatelessWidget {
   static const String route = "/violant/create";

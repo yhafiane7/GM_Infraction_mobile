@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/features/commune/widgets/commune_form_widget.dart';
-import 'package:GM_INFRACTION/features/commune/controllers/commune_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/commune/widgets/commune_form_widget.dart';
+import 'package:gmsoft_infractions_mobile/features/commune/controllers/commune_controller.dart';
 
 class CommuneViewWidget extends StatelessWidget {
   static const String route = "/commune/create";

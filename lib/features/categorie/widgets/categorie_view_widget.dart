@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/features/categorie/widgets/categorie_form_widget.dart';
-import 'package:GM_INFRACTION/features/categorie/controllers/categorie_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/categorie/widgets/categorie_form_widget.dart';
+import 'package:gmsoft_infractions_mobile/features/categorie/controllers/categorie_controller.dart';
 
 /// Main view for creating a new category
 class CategorieViewWidget extends StatelessWidget {

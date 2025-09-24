@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/button_option.dart';
+import 'package:gmsoft_infractions_mobile/models/button_option.dart';
 
 class HomeButton extends StatelessWidget {
   const HomeButton({Key? key, required this.buttonOption}) : super(key: key);

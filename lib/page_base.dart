@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
-// import 'package:GM_INFRACTION/agent.dart';
-import 'package:GM_INFRACTION/features/agent/agent.dart' as agent;
-import 'package:GM_INFRACTION/features/categorie/categorie.dart' as categorie;
-import 'package:GM_INFRACTION/features/commune/commune.dart' as commune;
-// import 'package:GM_INFRACTION/decision.dart';
-import 'package:GM_INFRACTION/features/decision/decision.dart' as decision;
-// import 'package:GM_INFRACTION/infraction.dart';
-import 'package:GM_INFRACTION/features/infraction/infraction.dart'
+// import 'package:gmsoft_infractions_mobile/agent.dart';
+import 'package:gmsoft_infractions_mobile/features/agent/agent.dart' as agent;
+import 'package:gmsoft_infractions_mobile/features/categorie/categorie.dart'
+    as categorie;
+import 'package:gmsoft_infractions_mobile/features/commune/commune.dart'
+    as commune;
+// import 'package:gmsoft_infractions_mobile/decision.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/decision.dart'
+    as decision;
+// import 'package:gmsoft_infractions_mobile/infraction.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/infraction.dart'
     as infraction;
-// import 'package:GM_INFRACTION/violant.dart';
-import 'package:GM_INFRACTION/features/violant/violant.dart' as violant;
-import 'package:GM_INFRACTION/models/categorie_model.dart';
-import 'package:GM_INFRACTION/models/commune_model.dart';
-import 'package:GM_INFRACTION/models/decision_model.dart';
-import 'package:GM_INFRACTION/models/infraction_model.dart';
-import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'package:GM_INFRACTION/services/ui_service.dart';
+// import 'package:gmsoft_infractions_mobile/violant.dart';
+import 'package:gmsoft_infractions_mobile/features/violant/violant.dart'
+    as violant;
+import 'package:gmsoft_infractions_mobile/models/categorie_model.dart';
+import 'package:gmsoft_infractions_mobile/models/commune_model.dart';
+import 'package:gmsoft_infractions_mobile/models/decision_model.dart';
+import 'package:gmsoft_infractions_mobile/models/infraction_model.dart';
+import 'package:gmsoft_infractions_mobile/models/violant_model.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
 
 import 'models/agent_model.dart';
 

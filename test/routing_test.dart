@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/routing.dart' as routing;
-import 'package:GM_INFRACTION/main.dart' as app;
-import 'package:GM_INFRACTION/home.dart';
-import 'package:GM_INFRACTION/page_base.dart';
+import 'package:gmsoft_infractions_mobile/routing.dart' as routing;
+import 'package:gmsoft_infractions_mobile/main.dart' as app;
+import 'package:gmsoft_infractions_mobile/home.dart';
+import 'package:gmsoft_infractions_mobile/page_base.dart';
 
 void main() {
   group('Routing Tests', () {

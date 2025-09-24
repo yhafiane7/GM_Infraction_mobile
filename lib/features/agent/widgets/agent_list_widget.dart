@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/agent_model.dart';
-import 'package:GM_INFRACTION/features/agent/controllers/agent_controller.dart';
-import 'package:GM_INFRACTION/features/agent/widgets/agent_details_dialog.dart';
+import 'package:gmsoft_infractions_mobile/models/agent_model.dart';
+import 'package:gmsoft_infractions_mobile/features/agent/controllers/agent_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/agent/widgets/agent_details_dialog.dart';
 
 class AgentListWidget extends StatelessWidget {
   static const String route = "/agent";

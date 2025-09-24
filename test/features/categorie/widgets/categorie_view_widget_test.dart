@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/features/categorie/categorie.dart';
+import 'package:gmsoft_infractions_mobile/features/categorie/categorie.dart';
 
 void main() {
   group('CategorieViewWidget', () {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/infraction_model.dart';
-import 'package:GM_INFRACTION/features/infraction/controllers/infraction_controller.dart';
-import 'package:GM_INFRACTION/features/infraction/widgets/infraction_details_dialog.dart';
+import 'package:gmsoft_infractions_mobile/models/infraction_model.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/controllers/infraction_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/widgets/infraction_details_dialog.dart';
 
 class InfractionListWidget extends StatelessWidget {
   static const String route = "/infraction";

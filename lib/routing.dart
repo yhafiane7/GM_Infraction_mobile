@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:GM_INFRACTION/home.dart';
-import 'package:GM_INFRACTION/models/agent_model.dart';
-import 'package:GM_INFRACTION/models/categorie_model.dart';
-import 'package:GM_INFRACTION/models/commune_model.dart';
-import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'package:GM_INFRACTION/page_base.dart';
-import 'package:GM_INFRACTION/services/ui_service.dart';
+import 'package:gmsoft_infractions_mobile/home.dart';
+import 'package:gmsoft_infractions_mobile/models/agent_model.dart';
+import 'package:gmsoft_infractions_mobile/models/categorie_model.dart';
+import 'package:gmsoft_infractions_mobile/models/commune_model.dart';
+import 'package:gmsoft_infractions_mobile/models/violant_model.dart';
+import 'package:gmsoft_infractions_mobile/page_base.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
 
 import 'features/agent/agent.dart' as agent;
 import 'features/commune/commune.dart' as commune;

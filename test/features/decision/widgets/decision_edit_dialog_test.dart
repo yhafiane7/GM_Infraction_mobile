@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/features/decision/decision.dart';
-import 'package:GM_INFRACTION/models/decision_model.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/decision.dart';
+import 'package:gmsoft_infractions_mobile/models/decision_model.dart';
 // Removed unnecessary direct controller import; available via decision.dart barrel
 
 class _RecordingDecisionController extends DecisionController {

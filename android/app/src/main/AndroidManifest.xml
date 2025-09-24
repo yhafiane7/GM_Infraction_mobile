@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ma.gmsoft.GM_INFRACTION">
+    package="ma.gmsoft.gmsoft_infractions_mobile">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="GM-INFRACTION"

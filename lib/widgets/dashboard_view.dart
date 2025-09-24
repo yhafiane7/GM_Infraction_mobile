@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/button_option.dart';
-import 'package:GM_INFRACTION/widgets/home_button.dart';
+import 'package:gmsoft_infractions_mobile/models/button_option.dart';
+import 'package:gmsoft_infractions_mobile/widgets/home_button.dart';
 
 class DashboardView extends StatelessWidget {
   final List<ButtonOption> options;

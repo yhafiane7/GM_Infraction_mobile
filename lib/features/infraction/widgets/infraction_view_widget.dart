@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/agent_model.dart';
-import 'package:GM_INFRACTION/models/categorie_model.dart';
-import 'package:GM_INFRACTION/models/commune_model.dart';
-import 'package:GM_INFRACTION/models/violant_model.dart';
-import 'package:GM_INFRACTION/features/infraction/controllers/infraction_controller.dart';
-import 'package:GM_INFRACTION/features/infraction/widgets/infraction_form_widget.dart';
+import 'package:gmsoft_infractions_mobile/models/agent_model.dart';
+import 'package:gmsoft_infractions_mobile/models/categorie_model.dart';
+import 'package:gmsoft_infractions_mobile/models/commune_model.dart';
+import 'package:gmsoft_infractions_mobile/models/violant_model.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/controllers/infraction_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/infraction/widgets/infraction_form_widget.dart';
 
 class InfractionViewWidget extends StatelessWidget {
   static const String route = "/infraction/create";

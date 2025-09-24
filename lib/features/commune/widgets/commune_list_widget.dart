@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/models/commune_model.dart';
-import 'package:GM_INFRACTION/features/commune/controllers/commune_controller.dart';
-import 'package:GM_INFRACTION/features/commune/widgets/commune_details_dialog.dart';
+import 'package:gmsoft_infractions_mobile/models/commune_model.dart';
+import 'package:gmsoft_infractions_mobile/features/commune/controllers/commune_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/commune/widgets/commune_details_dialog.dart';
 
 class CommuneListWidget extends StatelessWidget {
   static const String route = "/commune";

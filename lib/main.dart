@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/config/app_theme.dart';
-import 'package:GM_INFRACTION/routing.dart';
-import 'package:GM_INFRACTION/web_wrapper.dart';
-import 'package:GM_INFRACTION/services/snackbar_service.dart';
+import 'package:gmsoft_infractions_mobile/config/app_theme.dart';
+import 'package:gmsoft_infractions_mobile/routing.dart';
+import 'package:gmsoft_infractions_mobile/web_wrapper.dart';
+import 'package:gmsoft_infractions_mobile/services/snackbar_service.dart';
 import 'package:flutter/foundation.dart';
 
 void main() {

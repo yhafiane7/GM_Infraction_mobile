@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/services/ui_service.dart';
+import 'package:gmsoft_infractions_mobile/services/ui_service.dart';
 
 void main() {
   group('UiService Decorations', () {

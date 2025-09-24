@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/models/violant_model.dart';
+import 'package:gmsoft_infractions_mobile/models/violant_model.dart';
 
 void main() {
   group('Violant Model Tests', () {

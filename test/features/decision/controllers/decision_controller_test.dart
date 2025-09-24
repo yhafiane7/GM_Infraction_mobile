@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/features/decision/controllers/decision_controller.dart';
-import 'package:GM_INFRACTION/models/decision_model.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/controllers/decision_controller.dart';
+import 'package:gmsoft_infractions_mobile/models/decision_model.dart';
 
 void main() {
   group('DecisionController', () {

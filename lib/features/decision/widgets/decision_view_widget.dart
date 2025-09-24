@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:GM_INFRACTION/features/decision/controllers/decision_controller.dart';
-import 'package:GM_INFRACTION/features/decision/widgets/decision_form_widget.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/controllers/decision_controller.dart';
+import 'package:gmsoft_infractions_mobile/features/decision/widgets/decision_form_widget.dart';
 
 class DecisionViewWidget extends StatelessWidget {
   static const String route = "/decision/create";

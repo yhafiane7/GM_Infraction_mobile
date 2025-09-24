@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:GM_INFRACTION/main.dart';
+import 'package:gmsoft_infractions_mobile/main.dart';
 
 void main() {
   group('User Flow Integration Tests', () {
