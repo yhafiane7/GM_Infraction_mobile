@@ -1,6 +1,6 @@
 # gmsoft_infractions_mobile Flutter Application
 
-[![Development CI](https://github.com/yhafiane7/GM_Infraction_mobile/actions/workflows/ci.yml/badge.svg)](https://github.com/yhafiane7/GM_Infraction_mobile/actions/workflows/ci.yml)
+[![Development CI](https://github.com/yhafiane7/gmsoft-municipal-infractions-mobile/actions/workflows/ci.yml/badge.svg)](https://github.com/yhafiane7/gmsoft-municipal-infractions-mobile/actions/workflows/ci.yml)
 [![Flutter](https://img.shields.io/badge/Flutter-3.16.0-blue.svg)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/Dart-2.19.6+-blue.svg)](https://dart.dev/)
 
@@ -108,8 +108,8 @@ open coverage/html/index.html
 2. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yhafiane7/GM_Infraction_mobile.git
-   cd GM_Infraction_mobile
+   git clone https://github.com/yhafiane7/gmsoft-municipal-infractions-mobile.git
+   cd gmsoft-municipal-infractions-mobile
    ```
 
 3. **Install dependencies:**
