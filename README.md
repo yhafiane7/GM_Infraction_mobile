@@ -1,86 +1,74 @@
-# gmsoft_infractions_mobile Flutter Application
+# gmsoft_infractions_mobile
 
 [![Development CI](https://github.com/yhafiane7/gmsoft-municipal-infractions-mobile/actions/workflows/ci.yml/badge.svg)](https://github.com/yhafiane7/gmsoft-municipal-infractions-mobile/actions/workflows/ci.yml)
+[![Codecov](https://codecov.io/gh/yhafiane7/gmsoft-municipal-infractions-mobile/branch/dev/graph/badge.svg)](https://codecov.io/gh/yhafiane7/gmsoft-municipal-infractions-mobile)
 [![Flutter](https://img.shields.io/badge/Flutter-3.16.0-blue.svg)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/Dart-2.19.6+-blue.svg)](https://dart.dev/)
 
 ## Overview
 
-gmsoft_infractions_mobile is a Flutter mobile application designed to help Moroccan communes manage infractions reported by agents. The system tracks infractions with detailed information including the violator, location, category, and subsequent decisions. The app supports full CRUD (Create, Read, Update, Delete) operations on the key entities such as Agents, Violants (violators), Communes, Categories, Decisions, and Infractions.
-
-This app communicates with a Laravel backend API that handles data storage and business logic.
+Feature‑modular Flutter client for municipal infractions management. Designed as part of a broader system: mobile data collection → Laravel REST API → relational database, with headroom for analytics pipelines and reporting.
 
 ---
 
-## Key Features
+## Core features
 
-- **Agent Management:** Create, update, delete, and list agents responsible for reporting infractions.
-- **Violant Management:** Manage individuals who commit infractions.
-- **Commune Management:** Manage geographical administrative units (communes) with geo-coordinates.
-- **Category Management:** Define and manage categories of infractions.
-- **Infraction Reporting:** Report infractions with details such as location, date, category, involved agent, and violator.
-- **Decision Tracking:** Record decisions related to each infraction.
-- **Interactive UI:** Data tables, forms, dialogs for smooth user experience.
-- **Asynchronous API communication:** Robust fetching and posting data via REST API.
-- **Data validation and error handling** on input forms.
+- Structured data capture for infractions, agents, violators, and administrative zones
+- Asynchronous REST integration with deterministic error surfacing
+- Modular feature-based architecture and centralized routing/theme/messaging
 
 ---
 
-## Data Models
+## Design patterns
 
-- **Agent:** Holds agent info (`id`, `nom`, `prenom`, `tel`, `cin`)
-- **Violant:** Holds violator info (`id`, `nom`, `prenom`, `cin`)
-- **Commune:** Represents geographical units with (`id`, `pachalikcircon`, `caidat`, `nom`, `latitude`, `longitude`)
-- **Categorie:** Infraction category (`id`, `nom`, `degre`)
-- **Infraction:** Infraction details with relationships (`id`, `nom`, `date`, `adresse`, `commune_id`, `violant_id`, `agent_id`, `categorie_id`, `latitude`, `longitude`)
-- **Decision:** Decision related to infraction (`id`, `date`, `decisionPrise`, `infractionId`)
-
----
-
-## Architecture & Components
-
-- **Flutter Frontend:**
-
-  - Uses `MaterialApp` with routing for navigation.
-  - Screens: Home, Agent List/View, Violant List/View, Commune List/View, Category List/View, Infraction List/View, Decision List/View.
-  - DataTables and Forms for CRUD operations.
-  - Custom `Design` class for consistent input decorations and dialogs.
-
-- **Service Layer:**
-
-  - `ServiceBase` handles all REST API calls using the `http` package.
-  - CRUD methods for create, read, update, delete operations.
-  - Generic methods using JSON serialization/deserialization for models.
-
-- **Models:**
-  - Dart classes for each data entity with `fromJson` and `toJson` methods.
+- MVC-ish: Models (DTOs), Controllers (ChangeNotifier), Views (feature widgets).
+- Repository: `DataRepository` mediates CRUD per entity.
+- Gateway: `ApiClient` encapsulates HTTP + error taxonomy.
+- Facade: `UiService` composes multi-entity flows for forms/dialogs.
+- Feature modularization: `lib/features/<entity>/{controllers,widgets}`.
+- Coordinator: `routing.dart` binds routes and prefetches dependencies.
 
 ---
 
-## Development CI
+## Architecture
 
-This project uses GitHub Actions for development workflow:
+- UI: Feature modules by domain; state via `ChangeNotifier`; named routes
+- Service layer: `DataRepository` (CRUD orchestration) + `ApiClient` (HTTP, JSON, error taxonomy)
+- Backend integration: Laravel API as business/persistence layer; ready for downstream analytics
 
-- **Automated Testing**: Runs all tests on every push to `dev` branch
-- **Code Analysis**: Performs Flutter analyze and formatting checks
-- **Debug Build**: Builds debug APK for testing
-- **Quick Feedback**: Fast CI pipeline focused on development
+High‑level flow
 
-### Local Development Testing
-
-To run the same checks locally as the CI pipeline:
-
-```bash
-# Windows PowerShell
-.\scripts\ci_test.ps1
-
-# Or run individual commands:
-flutter pub get
-flutter test --coverage --reporter=expanded
-flutter analyze --no-fatal-infos
-dart format --output=none --set-exit-if-changed .
-flutter build apk --debug
 ```
+Flutter app → REST API (Laravel) → Database
+                            ↓
+                    Analytics / BI (future)
+```
+
+---
+
+## CI/CD
+
+GitHub Actions pipeline for automated quality gates and build artifacts:
+
+- **Automated Testing**: On every push/PR to `dev`, executes unit, widget, and integration tests.
+- **Static Analysis & Format**: Runs `flutter analyze` and `dart format --set-exit-if-changed`.
+- **Build Artifacts**: Produces a debug APK for quick install/testing on CI.
+- **Coverage**: Generates coverage (`coverage/lcov.info`) for local inspection; optional upload to services.
+- **Cache-Aware**: Caches Flutter and pub to speed up subsequent runs.
+- **Fast Feedback**: Pipeline is optimized for quick signal during active development.
+
+## Testing
+
+- Unit tests (`test/models/**`, `test/services/**`, `test/unit/**`): business logic, repositories, API client
+- Widget tests (`test/features/**/widgets/**`, `test/widgets/**`): views, dialogs, routing
+- Integration tests (`test/integration/**`): end-to-end flows and API connectivity
+
+Total test cases: 255+ across unit, widget, and integration suites.
+
+### Local
+
+Run tests and analysis locally to mirror CI:
+`flutter pub get && flutter test --coverage && flutter analyze && dart format --output=none --set-exit-if-changed .`
 
 ### Code Coverage
 
@@ -126,22 +114,22 @@ open coverage/html/index.html
 
 ---
 
-## Screenshots / UI Preview
+## Screens (select)
 
 <p float="left">
-  <img src="screenshots/Screenshot_Home.png"  height="500px" />
-  <img src="screenshots/Screenshot_Agent.png"  height="500px"/>
+  <img src="screenshots/Screenshot_Home.png"  height="420px" />
+  <img src="screenshots/Screenshot_Agent.png"  height="420px"/>
 </p>
 
 ---
 
-## Future Improvements
+## Roadmap
 
-- Add user authentication & roles (admin, agent)
-- Map integration to display infractions geographically
-- Push notifications for infractions or decisions
-- Offline support and synchronization
-- Enhanced error handling and logging
+- Role-based authentication & authorization
+- Real-time location and map visualization
+- Offline-first data capture and sync
+- Analytics and reporting integration
+- Enhanced observability (logging, tracing)
 
 ---
 
