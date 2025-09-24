@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gmsoft_infractions_mobile/config/app_theme.dart';
 import 'package:gmsoft_infractions_mobile/routing.dart';
-import 'package:gmsoft_infractions_mobile/web_wrapper.dart';
 import 'package:gmsoft_infractions_mobile/services/snackbar_service.dart';
-import 'package:flutter/foundation.dart';
 
 void main() {
-  runApp(kIsWeb ? const WebWrapper() : const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
